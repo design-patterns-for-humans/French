@@ -2,23 +2,23 @@
 
 ***
 <p align="center">
-🎉 Ultra-simplified explanation to design patterns! 🎉
+🎉 Introduction ultra-simplifiée aux design patterns! 🎉
 </p>
 <p align="center">
-A topic that can easily make anyone's mind wobble. Here I try to make them stick in to your mind (and maybe mine) by explaining them in the <i>simplest</i> way possible.
+Un sujet qui peut facilment faire peur. Ici je vais essayé de vous les faire intéger ( moi aussi par la même occasion ) en les expliquant de la manière la plus <i>simple</i> possible.
 </p>
 ***
 
 🚀 Introduction
 =================
 
-Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations.
+Les design patterns sont des solutions à des problèmes récurrent; **des directives pour surmonter certains problèmes**. Ce ne sont pas des classes, packages ou libraries que vous pouvez connnecter à votre application et attendre que la magie fasse effet.Ce sont, plutôt, des directives pour résoudre certains problèmes dans cetaines situations.
 
-> Design patterns are solutions to recurring problems; guidelines on how to tackle certain problems
+> Les design patterns sont des solution récurrentes à des problèmes récurrent; des directives pour résourdre certains problèmes.
 
-Wikipedia describes them as
+Wikipedia les décris ainsi
 
-> In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations.
+> En informatique, et plus particulièrement en développement logiciel, un patron de conception (plus souvent appelé design pattern) est un arrangement caractéristique de modules, reconnu comme bonne pratique en réponse à un problème de conception d'un logiciel. Il décrit une solution standard, utilisable dans la conception de différents logiciels.
 
 ⚠️ Be Careful
 -----------------
