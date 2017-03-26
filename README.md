@@ -20,20 +20,20 @@ Wikipedia les décris ainsi
 
 > En informatique, et plus particulièrement en développement logiciel, un patron de conception (plus souvent appelé design pattern) est un arrangement caractéristique de modules, reconnu comme bonne pratique en réponse à un problème de conception d'un logiciel. Il décrit une solution standard, utilisable dans la conception de différents logiciels.
 
-⚠️ Be Careful
------------------
-- Design patterns are not a silver bullet to all your problems.
+⚠️ Faites Attention
+-------------------
+- Les design patterns ne sont pas des solutions-miracles à tous vos problèmes.
 - Do not try to force them; bad things are supposed to happen, if done so. Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
-- If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
+- S'ils sont utilisés à un endroit correct et de manière correcte, ils peuvent s'avérer être des sauveurs; ou bien ils peuvent entraîner un désordre horrible dans un code.
 
-> Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways. Plus the **support for other languages is underway**.
+> Notez également que les exemples de code ci-dessous sont en PHP-7, cependant cela ne devrait pas vous arrêter parce que les concepts sont identiques. De plus le **support aux autres langues est en cours**.
 
-Types of Design Patterns
------------------
+Type de design patterns
+-----------------------
 
-* [Creational](#creational-design-patterns)
-* [Structural](#structural-design-patterns)
-* [Behavioral](#behavioral-design-patterns)
+* [Création](#creational-design-patterns)
+* [Structurel](#structural-design-patterns)
+* [Comportemental](#behavioral-design-patterns)
 
 Creational Design Patterns
 ==========================
