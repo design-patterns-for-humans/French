@@ -35,14 +35,14 @@ Type de design patterns
 * [Structurel](#structural-design-patterns)
 * [Comportemental](#behavioral-design-patterns)
 
-Creational Design Patterns
-==========================
+Design patterns de création
+===========================
 
-In plain words
-> Creational patterns are focused towards how to instantiate an object or group of related objects.
+En clair
+> Les patterns de créations sont centrés sur la façon d'instancier un objet ou un groupe d'objets liés.
 
-Wikipedia says
-> In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
+Wikipedia dit
+> Dans le génie logiciel, les design patterns de créations sont des patterns de conception qui traitent des mécanismes de création d'objet en essayant de créer les objets d'une façon appropriée à la situation. La forme de base de création d'objet pourrait entraîner des problèmes de conception ou ajouter de la complexité à la conception. Les design patterns de création résolvent ce problème en contrôlant la création d'objets d'une certaine façon.
 
  * [Simple Factory](#-simple-factory)
  * [Factory Method](#-factory-method)
