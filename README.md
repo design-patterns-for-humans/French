@@ -23,7 +23,7 @@ Wikipedia les décris ainsi
 ⚠️ Faites Attention
 -------------------
 - Les design patterns ne sont pas des solutions-miracles à tous vos problèmes.
-- Do not try to force them; bad things are supposed to happen, if done so. Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
+-  N'essayez pas de les forcer; des mauvaises choses sont censées se produire, si c'est fait. Gardez à l'esprit que les design patterns sont des solutions à **des problèmes** et non pas des solutions à **des problèmes trouver**; alors n'y pensez pas trop.
 - S'ils sont utilisés à un endroit correct et de manière correcte, ils peuvent s'avérer être des sauveurs; ou bien ils peuvent entraîner un désordre horrible dans un code.
 
 > Notez également que les exemples de code ci-dessous sont en PHP-7, cependant cela ne devrait pas vous arrêter parce que les concepts sont identiques. De plus le **support aux autres langues est en cours**.
