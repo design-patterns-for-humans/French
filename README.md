@@ -20,29 +20,29 @@ Wikipedia les décris ainsi
 
 > En informatique, et plus particulièrement en développement logiciel, un patron de conception (plus souvent appelé design pattern) est un arrangement caractéristique de modules, reconnu comme bonne pratique en réponse à un problème de conception d'un logiciel. Il décrit une solution standard, utilisable dans la conception de différents logiciels.
 
-⚠️ Be Careful
------------------
-- Design patterns are not a silver bullet to all your problems.
-- Do not try to force them; bad things are supposed to happen, if done so. Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
-- If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
+⚠️ Faites Attention
+-------------------
+- Les design patterns ne sont pas des solutions-miracles à tous vos problèmes.
+-  N'essayez pas de les forcer; des mauvaises choses sont censées se produire, si c'est fait. Gardez à l'esprit que les design patterns sont des solutions à **des problèmes** et non pas des solutions à **des problèmes trouver**; alors n'y pensez pas trop.
+- S'ils sont utilisés à un endroit correct et de manière correcte, ils peuvent s'avérer être des sauveurs; ou bien ils peuvent entraîner un désordre horrible dans un code.
 
-> Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways. Plus the **support for other languages is underway**.
+> Notez également que les exemples de code ci-dessous sont en PHP-7, cependant cela ne devrait pas vous arrêter parce que les concepts sont identiques. De plus le **support aux autres langues est en cours**.
 
-Types of Design Patterns
------------------
+Type de design patterns
+-----------------------
 
-* [Creational](#creational-design-patterns)
-* [Structural](#structural-design-patterns)
-* [Behavioral](#behavioral-design-patterns)
+* [Création](#creational-design-patterns)
+* [Structurel](#structural-design-patterns)
+* [Comportemental](#behavioral-design-patterns)
 
-Creational Design Patterns
-==========================
+Design patterns de création
+===========================
 
-In plain words
-> Creational patterns are focused towards how to instantiate an object or group of related objects.
+En clair
+> Les patterns de créations sont centrés sur la façon d'instancier un objet ou un groupe d'objets liés.
 
-Wikipedia says
-> In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
+Wikipedia dit
+> Dans le génie logiciel, les design patterns de créations sont des patterns de conception qui traitent des mécanismes de création d'objet en essayant de créer les objets d'une façon appropriée à la situation. La forme de base de création d'objet pourrait entraîner des problèmes de conception ou ajouter de la complexité à la conception. Les design patterns de création résolvent ce problème en contrôlant la création d'objets d'une certaine façon.
 
  * [Simple Factory](#-simple-factory)
  * [Factory Method](#-factory-method)
