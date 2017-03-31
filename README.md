@@ -118,18 +118,18 @@ Quand la création d'objet n'est pas seulement une affectation et implique une c
 🏭 Factory Method
 --------------
 
-Real world example
-> Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people.
+Un exemple dans le monde réel
+> Considérez un directeur d'embauche. C'est impossible pour une personne d'interviewer pour chacun des postes. Basée sur l'ouverture du travail, elle doit décider et déléguer les étapes de l'entretien (entrevue) à différentes personnes.
 
-In plain words
-> It provides a way to delegate the instantiation logic to child classes.
+En clair
+> Il fournit une façon de déléguer la logique d'instanciation aux classes enfant.
 
-Wikipedia says
-> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+Wikipedia dit
+> Dans la programmation à base de classe, le pattern factory method est un pattern créationnel qui utilise des patterns factory pour résoudre le problème de création d'objets sans devoir spécifier la classe exacte de l'objet qui sera créé. Pour ce faire, ont créé des objets par l’appel d’une méthode factory - ou spécifié dans une interface et implémenté dans une classe enfant, soit l'implémenter dans une classe de base et éventuellement surcharger (redéfinir) par des classes dérivées plutôt que d'appeler un constructeur.
 
- **Programmatic Example**
+ **Exemple de programme**
 
-Taking our hiring manager example above. First of all we have an interviewer interface and some implementations for it
+Prenons l'exemple de notre directeur d'embauche. Tout d'abord, nous disposons d'une interface d'intervieweur et de certaines implémentations
 
 ```php
 interface Interviewer
@@ -154,7 +154,7 @@ class CommunityExecutive implements Interviewer
 }
 ```
 
-Now let us create our `HiringManager`
+Maintenant, laissez-nous créer notre `HiringManager`
 
 ```php
 abstract class HiringManager
@@ -171,7 +171,7 @@ abstract class HiringManager
 }
 
 ```
-Now any child can extend it and provide the required interviewer
+Maintenant, n'importe quel enfant peut étendre et fournir l'intervieweur requis
 ```php
 class DevelopmentManager extends HiringManager
 {
@@ -189,7 +189,7 @@ class MarketingManager extends HiringManager
     }
 }
 ```
-and then it can be used as
+et ensuite il peut être utilisé comme
 
 ```php
 $devManager = new DevelopmentManager();
@@ -199,9 +199,9 @@ $marketingManager = new MarketingManager();
 $marketingManager->takeInterview(); // Output: Asking about community building.
 ```
 
-**When to use?**
+**Quand l'utiliser?**
 
-Useful when there is some generic processing in a class but the required sub-class is dynamically decided at runtime. Or putting it in other words, when the client doesn't know what exact sub-class it might need.
+Utile quand il y a du traitement générique dans une classe, mais la sous-classe requise est déterminée dynamiquement lors de l'exécution. Ou, en d'autre termes, lorsque le client ne sait pas quelle sous-classe exacte pourrait avoir besoin. 
 
 🔨 Abstract Factory
 ----------------
