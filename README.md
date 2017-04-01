@@ -53,20 +53,20 @@ Wikipedia dit
 
 🏠 Simple Factory
 --------------
-Real world example
-> Consider, you are building a house and you need doors. It would be a mess if every time you need a door, you put on your carpenter clothes and start making a door in your house. Instead you get it made from a factory.
+Un exemple dans le monde réel
+> Considérez que vous construisez une maison et vous avez besoin de portes. Ce serait un gâchis si chaque fois que vous avez besoin d'une porte, vous mettez vos vêtements de menuisier (charpentier) et commencez à construire une porte dans votre maison. Au lieu de cela vous le faites dans une usine.
 
-In plain words
-> Simple factory simply generates an instance for client without exposing any instantiation logic to the client
+En clair
+> Simple factory génère simplement une instance pour le client sans exposer toute la logique d'instanciation au client.
 
-Wikipedia says
-> In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class from some method call, which is assumed to be "new".
+Wikipedia dit
+> Dans la programmation orientée objet (POO), un factory est un objet qui créer d'autres objets – formellement un factory est une fonction ou méthode qui retourne des objets d'un prototype ou d'une classe variable à partir d'un appel de méthode, qui est supposé être "new".
 
-**Programmatic Example**
+**Exemple de programme**
 
-First of all we have a door interface and the implementation
+Tout d'abord, nous avons une interface de porte (Door) et l'implémentation
 ```php
-interface Door
+interface Door 
 {
     public function getWidth(): float;
     public function getHeight(): float;
@@ -94,7 +94,7 @@ class WoodenDoor implements Door
     }
 }
 ```
-Then we have our door factory that makes the door and returns it
+Alors nous avons notre factory de porte (DoorFactory) qui construit la porte et la renvoie
 ```php
 class DoorFactory
 {
@@ -104,32 +104,32 @@ class DoorFactory
     }
 }
 ```
-And then it can be used as
+Et il peut être utilisé comme
 ```php
 $door = DoorFactory::makeDoor(100, 200);
 echo 'Width: ' . $door->getWidth();
 echo 'Height: ' . $door->getHeight();
 ```
 
-**When to Use?**
+**Quand l'utiliser?**
 
-When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere.
+Quand la création d'objet n'est pas seulement une affectation et implique une certaine logique, cela a du sens de le mettre dans un factory au lieu de répéter le même code partout.
 
 🏭 Factory Method
 --------------
 
-Real world example
-> Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people.
+Un exemple dans le monde réel
+> Considérez un directeur d'embauche. C'est impossible pour une personne d'interviewer pour chacun des postes. Basée sur l'ouverture du travail, elle doit décider et déléguer les étapes de l'entretien (entrevue) à différentes personnes.
 
-In plain words
-> It provides a way to delegate the instantiation logic to child classes.
+En clair
+> Il fournit une façon de déléguer la logique d'instanciation aux classes enfant.
 
-Wikipedia says
-> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+Wikipedia dit
+> Dans la programmation à base de classe, le pattern factory method est un pattern créationnel qui utilise des patterns factory pour résoudre le problème de création d'objets sans devoir spécifier la classe exacte de l'objet qui sera créé. Pour ce faire, ont créé des objets par l’appel d’une méthode factory - ou spécifié dans une interface et implémenté dans une classe enfant, soit l'implémenter dans une classe de base et éventuellement surcharger (redéfinir) par des classes dérivées plutôt que d'appeler un constructeur.
 
- **Programmatic Example**
+ **Exemple de programme**
 
-Taking our hiring manager example above. First of all we have an interviewer interface and some implementations for it
+Prenons l'exemple de notre directeur d'embauche. Tout d'abord, nous disposons d'une interface d'intervieweur et de certaines implémentations
 
 ```php
 interface Interviewer
@@ -154,7 +154,7 @@ class CommunityExecutive implements Interviewer
 }
 ```
 
-Now let us create our `HiringManager`
+Maintenant, laissez-nous créer notre `HiringManager`
 
 ```php
 abstract class HiringManager
@@ -171,7 +171,7 @@ abstract class HiringManager
 }
 
 ```
-Now any child can extend it and provide the required interviewer
+Maintenant, n'importe quel enfant peut étendre et fournir l'intervieweur requis
 ```php
 class DevelopmentManager extends HiringManager
 {
@@ -189,7 +189,7 @@ class MarketingManager extends HiringManager
     }
 }
 ```
-and then it can be used as
+et ensuite il peut être utilisé comme
 
 ```php
 $devManager = new DevelopmentManager();
@@ -199,9 +199,9 @@ $marketingManager = new MarketingManager();
 $marketingManager->takeInterview(); // Output: Asking about community building.
 ```
 
-**When to use?**
+**Quand l'utiliser?**
 
-Useful when there is some generic processing in a class but the required sub-class is dynamically decided at runtime. Or putting it in other words, when the client doesn't know what exact sub-class it might need.
+Utile quand il y a du traitement générique dans une classe, mais la sous-classe requise est déterminée dynamiquement lors de l'exécution. Ou, en d'autre termes, lorsque le client ne sait pas quelle sous-classe exacte pourrait avoir besoin. 
 
 🔨 Abstract Factory
 ----------------
