@@ -59,7 +59,7 @@ Un exemple dans le monde réel
 En clair
 > Simple factory génère simplement une instance pour le client sans exposer toute la logique d'instanciation au client.
 
-Wikipedia dit
+D'après Wikipédia
 > Dans la programmation orientée objet (POO), un factory est un objet qui créer d'autres objets – formellement un factory est une fonction ou méthode qui retourne des objets d'un prototype ou d'une classe variable à partir d'un appel de méthode, qui est supposé être "new".
 
 **Exemple de programme**
@@ -124,7 +124,7 @@ Un exemple dans le monde réel
 En clair
 > Il fournit une façon de déléguer la logique d'instanciation aux classes enfant.
 
-Wikipedia dit
+D'après Wikipédia
 > Dans la programmation à base de classe, le pattern factory method est un pattern créationnel qui utilise des patterns factory pour résoudre le problème de création d'objets sans devoir spécifier la classe exacte de l'objet qui sera créé. Pour ce faire, ont créé des objets par l’appel d’une méthode factory - ou spécifié dans une interface et implémenté dans une classe enfant, soit l'implémenter dans une classe de base et éventuellement surcharger (redéfinir) par des classes dérivées plutôt que d'appeler un constructeur.
 
  **Exemple de programme**
@@ -206,18 +206,18 @@ Utile quand il y a du traitement générique dans une classe, mais la sous-class
 🔨 Abstract Factory
 ----------------
 
-Real world example
-> Extending our door example from Simple Factory. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
+Un exemple dans le monde réel
+> Étendons notre exemple de porte sur la base de Simple Factory. En fonction de vos besoins, vous pouvez obtenir une porte en bois depuis un magasin de portes en bois, d'une porte en fer depuis un magasin de porte en fer ou d'une porte en PVC d'un magasin approprié. De plus vous pourriez avoir besoin d'un type avec de différentes sortes de spécialités pour placer (fixer) la porte, par exemple un charpentier pour la porte en bois, un soudeur pour la porte en fer, etc. Comme vous pouvez le voir, les portes sont maintenant dépendantes, la porte en bois à besoins d'un charpentier, une porte en fer à besoins d'un soudeur etc.
 
-In plain words
-> A factory of factories; a factory that groups the individual but related/dependent factories together without specifying their concrete classes.
+En clair
+> Une usine de Factory (Une usine d'usines); Une usine (Factory) qui regroupe les Factory individuelles mais liées ensemble sans spécifier leurs classes concrètes. En d’autres mots, une Factory qui regroupe plusieurs Factory individuelles mais partageant des liens entre elles.
 
-Wikipedia says
-> The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
+D'après Wikipédia
+> Le pattern Abstract Factory offre un moyen d'encapsuler un groupe de Factory individuelles qui ont un thème commun sans spécifier leurs classes concrètes.
 
-**Programmatic Example**
+**Exemple de programme**
 
-Translating the door example above. First of all we have our `Door` interface and some implementation for it
+Traduction de l'exemple de la porte (Door) ci-dessus. Tout d'abord nous avons notre interface `Door` et quelques implémentations pour elle.
 
 ```php
 interface Door
@@ -241,7 +241,7 @@ class IronDoor implements Door
     }
 }
 ```
-Then we have some fitting experts for each door type
+Ensuite, nous avons quelques experts appropriés pour chaque type de porte
 
 ```php
 interface DoorFittingExpert
@@ -266,7 +266,7 @@ class Carpenter implements DoorFittingExpert
 }
 ```
 
-Now we have our abstract factory that would let us make family of related objects i.e. wooden door factory would create a wooden door and wooden door fitting expert and iron door factory would create an iron door and iron door fitting expert
+Maintenant, nous avons notre Abrastract Factory qui nous permettrait de créer une famille d'objets liés, c'est-à-dire que le Factory de la porte (`WoodenDoorFactory`) en bois créerait une porte en bois et un spécialiste de porte en bois (un Charpentier) et le Factory de la porte en fer (`IronDoorFactory`) créerait une porte en fer et un spécialiste de porte en fer (un Soudeur).
 ```php
 interface DoorFactory
 {
@@ -274,7 +274,7 @@ interface DoorFactory
     public function makeFittingExpert(): DoorFittingExpert;
 }
 
-// Wooden factory to return carpenter and wooden door
+// Factory de la porte en bois qui retourne un Charpentier et une porte en bois
 class WoodenDoorFactory implements DoorFactory
 {
     public function makeDoor(): Door
@@ -288,7 +288,7 @@ class WoodenDoorFactory implements DoorFactory
     }
 }
 
-// Iron door factory to get iron door and the relevant fitting expert
+// Factory de la porte en fer qui retourne une porte en fer et un Soudeur
 class IronDoorFactory implements DoorFactory
 {
     public function makeDoor(): Door
@@ -302,7 +302,7 @@ class IronDoorFactory implements DoorFactory
     }
 }
 ```
-And then it can be used as
+Et ensuite il peut être utilisé comme 
 ```php
 $woodenFactory = new WoodenDoorFactory();
 
@@ -312,7 +312,7 @@ $expert = $woodenFactory->makeFittingExpert();
 $door->getDescription();  // Output: I am a wooden door
 $expert->getDescription(); // Output: I can only fit wooden doors
 
-// Same for Iron Factory
+// Idem pour le Factory de porte en fer
 $ironFactory = new IronDoorFactory();
 
 $door = $ironFactory->makeDoor();
@@ -322,11 +322,11 @@ $door->getDescription();  // Output: I am an iron door
 $expert->getDescription(); // Output: I can only fit iron doors
 ```
 
-As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.   
+Comme vous pouvez le voir, le Factory de la porte (`WoodenDoorFactory`) a encapsulé le charpentier (`carpenter`) et la porte en bois (`wooden door`), aussi le Factory de la porte en fer (`IronDoorFactory`) a encapsulé la porte en fer (`iron door`) et le soudeur (`welder`). Et donc, cela nous a aidés à nous  assurer que pour chacune des portes créées, nous n'obtenions pas un mauvais expert.  
 
-**When to use?**
+**Quand l'utiliser?**
 
-When there are interrelated dependencies with not-that-simple creation logic involved
+Quand il y a des dépendances interdépendantes avec une logique de création pas si simples.
 
 👷 Builder
 --------------------------------------------
