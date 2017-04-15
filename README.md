@@ -330,14 +330,15 @@ Quand il y a des dépendances interdépendantes avec une logique de création pa
 
 👷 Builder
 --------------------------------------------
-Real world example
-> Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
+Un exemple dans le monde réel
+> Imaginez que vous êtes chez Hardee's (une chaîne de restauration) et que vous passez une commande spécifique, Disons, un "Big Hardee" et ils le remettent sans poser *de questions*; c'est l'exemple d'une simple Factory. Mais il y a des cas où la logique de création pourrait impliquer plus d'étapes. Par exemple, vous voulez un ticket de métro personnalisé, Vous avez plusieurs options dans la façon de confectionner votre hamburger, par exemple, quel pain voulez-vous ? quels types de sauces aimeriez-vous ? quel fromage voudriez-vous ? etc. Dans de telles situations, le pattern Builder vient à la rescousse.
 
-In plain words
-> Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
+En clair
+> Permets de créer des versions différentes (ou saveurs) d’un objet tout en évitant la pollution des constructeurs. Utile quand il pourrait y avoir plusieurs versions différentes d’un objet. Ou lorsqu’il y a beaucoup d’étapes dans la création d’un objet.
 
-Wikipedia says
-> The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor anti-pattern.
+D'apres Wikipédia
+> Le pattern Builder est un pattern de conception de logiciels de création  d’objet avec l’intention de trouver une solution à l’anti-pattern de constructeur télescopique (ou  condenser).
+> Télescopique : dont les éléments s'emboîtent les uns dans les autres.
 
 Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
 
