@@ -12,23 +12,23 @@ Un sujet qui peut facilment faire peur. Ici je vais essayé de vous les faire in
 🚀 Introduction
 =================
 
-Les design patterns sont des solutions à des problèmes récurrent; **des directives pour surmonter certains problèmes**. Ce ne sont pas des classes, packages ou libraries que vous pouvez connnecter à votre application et attendre que la magie fasse effet.Ce sont, plutôt, des directives pour résoudre certains problèmes dans cetaines situations.
+Les design patterns (patrons de conception en Français) sont des solutions à des problèmes récurrents; **des directives pour surmonter certains problèmes**. Ce ne sont pas des classes, packages ou libraries que vous pouvez connnecter à votre application et attendre que la magie fasse effet.Ce sont, plutôt, des directives pour résoudre certains problèmes dans certaines situations.
 
-> Les design patterns sont des solution récurrentes à des problèmes récurrent; des directives pour résourdre certains problèmes.
+> Les design patterns sont des solutions récurrentes à des problèmes récurrents; des directives pour résourdre certains problèmes.
 
-Wikipedia les décris ainsi
+Wikipedia les décrit ainsi :
 
 > En informatique, et plus particulièrement en développement logiciel, un patron de conception (plus souvent appelé design pattern) est un arrangement caractéristique de modules, reconnu comme bonne pratique en réponse à un problème de conception d'un logiciel. Il décrit une solution standard, utilisable dans la conception de différents logiciels.
 
 ⚠️ Faites Attention
 -------------------
 - Les design patterns ne sont pas des solutions-miracles à tous vos problèmes.
--  N'essayez pas de les forcer; des mauvaises choses sont censées se produire, si c'est fait. Gardez à l'esprit que les design patterns sont des solutions à **des problèmes** et non pas des solutions à **des problèmes trouver**; alors n'y pensez pas trop.
-- S'ils sont utilisés à un endroit correct et de manière correcte, ils peuvent s'avérer être des sauveurs; ou bien ils peuvent entraîner un désordre horrible dans un code.
+- N'essayez pas de les forcer; de mauvaises choses vont se produire si vous le faites. Gardez à l'esprit que les design patterns sont des solutions **à** des problèmes et non pas des solutions pour **trouver** des problèmes; alors n'y pensez pas trop.
+- S'ils sont utilisés à un endroit correct et de manière correcte, ils peuvent s'avérer salvateurs; dans le cas contraire ils peuvent entraîner un désordre horrible dans un code.
 
-> Notez également que les exemples de code ci-dessous sont en PHP-7, cependant cela ne devrait pas vous arrêter parce que les concepts sont identiques. De plus le **support aux autres langues est en cours**.
+> Notez également que les exemples de code ci-dessous sont en PHP-7, cependant cela ne devrait pas vous arrêter parce que les concepts sont identiques. De plus la **rédaction pour d'autres langages est en cours**.
 
-Type de design patterns
+Types de design patterns
 -----------------------
 
 * [Création](#creational-design-patterns)
@@ -154,7 +154,7 @@ class CommunityExecutive implements Interviewer
 }
 ```
 
-Maintenant, laissez-nous créer notre `HiringManager`
+Maintenant, créons notre `HiringManager`
 
 ```php
 abstract class HiringManager
@@ -171,7 +171,7 @@ abstract class HiringManager
 }
 
 ```
-Maintenant, n'importe quel enfant peut étendre et fournir l'intervieweur requis
+A présent, n'importe quel enfant peut étendre et fournir l'intervieweur requis
 ```php
 class DevelopmentManager extends HiringManager
 {
@@ -201,7 +201,7 @@ $marketingManager->takeInterview(); // Output: Asking about community building.
 
 **Quand l'utiliser?**
 
-Utile quand il y a du traitement générique dans une classe, mais la sous-classe requise est déterminée dynamiquement lors de l'exécution. Ou, en d'autre termes, lorsque le client ne sait pas quelle sous-classe exacte pourrait avoir besoin. 
+Utile quand il y a du traitement générique dans une classe, mais la sous-classe requise est déterminée dynamiquement lors de l'exécution. Ou, en d'autre termes, lorsque le client ne sait pas de quelle sous-classe exacte il pourrait avoir besoin. 
 
 🔨 Abstract Factory
 ----------------
