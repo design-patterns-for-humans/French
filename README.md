@@ -330,13 +330,13 @@ Quand il y a des dépendances interdépendantes avec une logique de création pa
 
 👷 Builder
 --------------------------------------------
-Real world example
+Un exemple dans le monde réel
 > Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
 
-In plain words
+En clair
 > Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
 
-Wikipedia says
+D'après Wikipédia
 > The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor anti-pattern.
 
 Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
@@ -349,7 +349,7 @@ public function __construct($size, $cheese = true, $pepperoni = true, $tomato = 
 
 As you can see; the number of constructor parameters can quickly get out of hand and it might become difficult to understand the arrangement of parameters. Plus this parameter list could keep on growing if you would want to add more options in future. This is called telescoping constructor anti-pattern.
 
-**Programmatic Example**
+**Exemple de programme**
 
 The sane alternative is to use the builder pattern. First of all we have our burger that we want to make
 
@@ -431,26 +431,26 @@ $burger = (new BurgerBuilder(14))
                     ->build();
 ```
 
-**When to use?**
+**Quand l'utiliser?**
 
 When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that; factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
 
 🐑 Prototype
 ------------
-Real world example
-> Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
+Un exemple dans le monde réel
+> Vous vous souvenez de Dolly ? Le mouton cloné ! N'entrons pas dans les détails mais nous allons parler de clonage.
 
-In plain words
-> Create object based on an existing object through cloning.
+En clair
+> Crée un objet basé sur un objet existant comme du clonage.
 
-Wikipedia says
-> The prototype pattern is a creational design pattern in software development. It is used when the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
+D'après Wikipédia
+> Le patron de conception prototype est utilisé lorsque la création d'une instance est complexe ou consommatrice en temps. Plutôt que créer plusieurs instances de la classe, on copie la première instance et on modifie la copie de façon appropriée.
 
-In short, it allows you to create a copy of an existing object and modify it to your needs, instead of going through the trouble of creating an object from scratch and setting it up.
+En gros, il permet de créer une copie d'un objet existant en le modifiant à nos besoins, au lieu de devoir passer dans les travers de recréer un nouvel objet en partant de zéro.
 
-**Programmatic Example**
+**Exemple de programme**
 
-In PHP, it can be easily done using `clone`
+C'est faisable très facilement en PHP en utilisant `clone`
 
 ```php
 class Sheep
@@ -485,7 +485,7 @@ class Sheep
     }
 }
 ```
-Then it can be cloned like below
+Ensuite on peut le cloner comme ci-dessous
 ```php
 $original = new Sheep('Jolly');
 echo $original->getName(); // Jolly
@@ -498,28 +498,28 @@ echo $cloned->getName(); // Dolly
 echo $cloned->getCategory(); // Mountain sheep
 ```
 
-Also you could use the magic method `__clone` to modify the cloning behavior.
+On peut également utiliser la méthode magique `__clone` pour modifier le comportement du clonage.
 
-**When to use?**
+**Quand l'utiliser?**
 
-When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
+Quand on a besoin d'un objet similaire à un objet existant ou quand la création d'un tout nouvel objet serait trop coûteuse par rapport à un clonage.
 
 💍 Singleton
 ------------
-Real world example
-> There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
+Un exemple dans le monde réel
+> Il ne peut y avoir qu'un seul président d'un pays à la fois. A chaque fois que le devoir l'appelle, c'est le même président qui agit. Le président est ici un singleton.
 
-In plain words
-> Ensures that only one object of a particular class is ever created.
+En clair
+> S'assure qu'un seul et unique objet d'une classe ne peut être instancié.
 
-Wikipedia says
-> In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
+D'après Wikipédia
+> En génie logiciel, le singleton est un patron de conception (design pattern) dont l'objectif est de restreindre l'instanciation d'une classe à un seul objet (ou bien à quelques objets seulement). Il est utilisé lorsqu'on a besoin exactement d'un objet pour coordonner des opérations dans un système.
 
-Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus it mocking the singleton could be difficult.
+Le pattern Singleton est en fait considéré comme un anti-pattern et il faut éviter d'en abuser. Il n'est pas nécessairement mauvais et a quelques cas d'utilisation valides mais il doit être utilisé avec précaution car il introduit un état global dans l'application. Des changements à l'intérieur du Singleton pourraient avoir des effets secondaires à d'autres endroits et le debug peut s'avérer difficile. Une autre mauvaise conséquence de son utilisation est qu'il rend le code fortement couplé et les tests unitaires s'en retrouvent d'autant plus compliqués.
 
-**Programmatic Example**
+**Exemple de programme**
 
-To create a singleton, make the constructor private, disable cloning, disable extension and create a static variable to house the instance
+Pour créer un Singleton, il faut rendre le constructeur privé, empêcher le clonage, empêcher l'héritage et créer une variable statique qui va accueillir l'instance globale
 ```php
 final class President
 {
@@ -550,7 +550,7 @@ final class President
     }
 }
 ```
-Then in order to use
+Il peut ensuite être utilisé comme
 ```php
 $president1 = President::getInstance();
 $president2 = President::getInstance();
@@ -560,10 +560,10 @@ var_dump($president1 === $president2); // true
 
 Structural Design Patterns
 ==========================
-In plain words
+En clair
 > Structural patterns are mostly concerned with object composition or in other words how the entities can use each other. Or yet another explanation would be, they help in answering "How to build a software component?"
 
-Wikipedia says
+D'après Wikipédia
 > In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
 
  * [Adapter](#-adapter)
@@ -576,18 +576,18 @@ Wikipedia says
 
 🔌 Adapter
 -------
-Real world example
+Un exemple dans le monde réel
 > Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
 > Another example would be the famous power adapter; a three legged plug can't be connected to a two pronged outlet, it needs to use a power adapter that makes it compatible with the two pronged outlet.
 > Yet another example would be a translator translating words spoken by one person to another
 
-In plain words
+En clair
 > Adapter pattern lets you wrap an otherwise incompatible object in an adapter to make it compatible with another class.
 
-Wikipedia says
+D'après Wikipédia
 > In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
 
-**Programmatic Example**
+**Exemple de programme**
 
 Consider a game where there is a hunter and he hunts lions.
 
@@ -662,18 +662,18 @@ $hunter->hunt($wildDogAdapter);
 
 🚡 Bridge
 ------
-Real world example
+Un exemple dans le monde réel
 > Consider you have a website with different pages and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
 
 ![With and without the bridge pattern](https://cloud.githubusercontent.com/assets/11269635/23065293/33b7aea0-f515-11e6-983f-98823c9845ee.png)
 
-In Plain Words
+En clair
 > Bridge pattern is about preferring composition over inheritance. Implementation details are pushed from a hierarchy to another object with a separate hierarchy.
 
-Wikipedia says
+D'après Wikipédia
 > The bridge pattern is a design pattern used in software engineering that is meant to "decouple an abstraction from its implementation so that the two can vary independently"
 
-**Programmatic Example**
+**Exemple de programme**
 
 Translating our WebPage example from above. Here we have the `WebPage` hierarchy
 
@@ -758,16 +758,16 @@ echo $careers->getContent(); // "Careers page in Dark Black";
 🌿 Composite
 -----------------
 
-Real world example
+Un exemple dans le monde réel
 > Every organization is composed of employees. Each of the employees has the same features i.e. has a salary, has some responsibilities, may or may not report to someone, may or may not have some subordinates etc.
 
-In plain words
+En clair
 > Composite pattern lets clients treat the individual objects in a uniform manner.
 
-Wikipedia says
+D'après Wikipédia
 > In software engineering, the composite pattern is a partitioning design pattern. The composite pattern describes that a group of objects is to be treated in the same way as a single instance of an object. The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies. Implementing the composite pattern lets clients treat individual objects and compositions uniformly.
 
-**Programmatic Example**
+**Exemple de programme**
 
 Taking our employees example from above. Here we have different employee types
 
@@ -889,17 +889,17 @@ echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 22000
 ☕ Decorator
 -------------
 
-Real world example
+Un exemple dans le monde réel
 
 > Imagine you run a car service shop offering multiple services. Now how do you calculate the bill to be charged? You pick one service and dynamically keep adding to it the prices for the provided services till you get the final cost. Here each type of service is a decorator.
 
-In plain words
+En clair
 > Decorator pattern lets you dynamically change the behavior of an object at run time by wrapping them in an object of a decorator class.
 
-Wikipedia says
+D'après Wikipédia
 > In object-oriented programming, the decorator pattern is a design pattern that allows behavior to be added to an individual object, either statically or dynamically, without affecting the behavior of other objects from the same class. The decorator pattern is often useful for adhering to the Single Responsibility Principle, as it allows functionality to be divided between classes with unique areas of concern.
 
-**Programmatic Example**
+**Exemple de programme**
 
 Lets take coffee for example. First of all we have a simple coffee implementing the coffee interface
 
@@ -1009,16 +1009,16 @@ echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
 📦 Facade
 ----------------
 
-Real world example
+Un exemple dans le monde réel
 > How do you turn on the computer? "Hit the power button" you say! That is what you believe because you are using a simple interface that computer provides on the outside, internally it has to do a lot of stuff to make it happen. This simple interface to the complex subsystem is a facade.
 
-In plain words
+En clair
 > Facade pattern provides a simplified interface to a complex subsystem.
 
-Wikipedia says
+D'après Wikipédia
 > A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
 
-**Programmatic Example**
+**Exemple de programme**
 
 Taking our computer example from above. Here we have the computer class
 
@@ -1098,16 +1098,16 @@ $computer->turnOff(); // Bup bup buzzz! Haah! Zzzzz
 🍃 Flyweight
 ---------
 
-Real world example
+Un exemple dans le monde réel
 > Did you ever have fresh tea from some stall? They often make more than one cup that you demanded and save the rest for any other customer so to save the resources e.g. gas etc. Flyweight pattern is all about that i.e. sharing.
 
-In plain words
+En clair
 > It is used to minimize memory usage or computational expenses by sharing as much as possible with similar objects.
 
-Wikipedia says
+D'après Wikipédia
 > In computer programming, flyweight is a software design pattern. A flyweight is an object that minimizes memory use by sharing as much data as possible with other similar objects; it is a way to use objects in large numbers when a simple repeated representation would use an unacceptable amount of memory.
 
-**Programmatic example**
+**Exemple de programme**
 
 Translating our tea example from above. First of all we have tea types and tea maker
 
@@ -1178,16 +1178,16 @@ $shop->serve();
 
 🎱 Proxy
 -------------------
-Real world example
+Un exemple dans le monde réel
 > Have you ever used an access card to go through a door? There are multiple options to open that door i.e. it can be opened either using access card or by pressing a button that bypasses the security. The door's main functionality is to open but there is a proxy added on top of it to add some functionality. Let me better explain it using the code example below.
 
-In plain words
+En clair
 > Using the proxy pattern, a class represents the functionality of another class.
 
-Wikipedia says
+D'après Wikipédia
 > A proxy, in its most general form, is a class functioning as an interface to something else. A proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes. Use of the proxy can simply be forwarding to the real object, or can provide additional logic. In the proxy extra functionality can be provided, for example caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
 
-**Programmatic Example**
+**Exemple de programme**
 
 Taking our security door example from above. Firstly we have the door interface and an implementation of door
 
@@ -1255,10 +1255,10 @@ Yet another example would be some sort of data-mapper implementation. For exampl
 Behavioral Design Patterns
 ==========================
 
-In plain words
+En clair
 > It is concerned with assignment of responsibilities between the objects. What makes them different from structural patterns is they don't just specify the structure but also outline the patterns for message passing/communication between them. Or in other words, they assist in answering "How to run a behavior in software component?"
 
-Wikipedia says
+D'après Wikipédia
 > In software engineering, behavioral design patterns are design patterns that identify common communication patterns between objects and realize these patterns. By doing so, these patterns increase flexibility in carrying out this communication.
 
 * [Chain of Responsibility](#-chain-of-responsibility)
@@ -1275,16 +1275,16 @@ Wikipedia says
 🔗 Chain of Responsibility
 -----------------------
 
-Real world example
+Un exemple dans le monde réel
 > For example, you have three payment methods (`A`, `B` and `C`) setup in your account; each having a different amount in it. `A` has 100 USD, `B` has 300 USD and `C` having 1000 USD and the preference for payments is chosen as `A` then `B` then `C`. You try to purchase something that is worth 210 USD. Using Chain of Responsibility, first of all account `A` will be checked if it can make the purchase, if yes purchase will be made and the chain will be broken. If not, request will move forward to account `B` checking for amount if yes chain will be broken otherwise the request will keep forwarding till it finds the suitable handler. Here `A`, `B` and `C` are links of the chain and the whole phenomenon is Chain of Responsibility.
 
-In plain words
+En clair
 > It helps building a chain of objects. Request enters from one end and keeps going from object to object till it finds the suitable handler.
 
-Wikipedia says
+D'après Wikipédia
 > In object-oriented design, the chain-of-responsibility pattern is a design pattern consisting of a source of command objects and a series of processing objects. Each processing object contains logic that defines the types of command objects that it can handle; the rest are passed to the next processing object in the chain.
 
-**Programmatic Example**
+**Exemple de programme**
 
 Translating our account example above. First of all we have a base account having the logic for chaining the accounts together and some accounts
 
@@ -1378,17 +1378,17 @@ $bank->pay(259);
 👮 Command
 -------
 
-Real world example
+Un exemple dans le monde réel
 > A generic example would be you ordering a food at restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook.
 > Another example would be you (i.e. `Client`) switching on (i.e. `Command`) the television (i.e. `Receiver`) using a remote control (`Invoker`).
 
-In plain words
+En clair
 > Allows you to encapsulate actions in objects. The key idea behind this pattern is to provide the means to decouple client from receiver.
 
-Wikipedia says
+D'après Wikipédia
 > In object-oriented programming, the command pattern is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action or trigger an event at a later time. This information includes the method name, the object that owns the method and values for the method parameters.
 
-**Programmatic Example**
+**Exemple de programme**
 
 First of all we have the receiver that has the implementation of every action that could be performed
 ```php
@@ -1494,16 +1494,16 @@ Command pattern can also be used to implement a transaction based system. Where 
 ➿ Iterator
 --------
 
-Real world example
+Un exemple dans le monde réel
 > An old radio set will be a good example of iterator, where user could start at some channel and then use next or previous buttons to go through the respective channels. Or take an example of MP3 player or a TV set where you could press the next and previous buttons to go through the consecutive channels or in other words they all provide an interface to iterate through the respective channels, songs or radio stations.  
 
-In plain words
+En clair
 > It presents a way to access the elements of an object without exposing the underlying presentation.
 
-Wikipedia says
+D'après Wikipédia
 > In object-oriented programming, the iterator pattern is a design pattern in which an iterator is used to traverse a container and access the container's elements. The iterator pattern decouples algorithms from containers; in some cases, algorithms are necessarily container-specific and thus cannot be decoupled.
 
-**Programmatic example**
+**Exemple de programme**
 
 In PHP it is quite easy to implement using SPL (Standard PHP Library). Translating our radio stations example from above. First of all we have `RadioStation`
 
@@ -1600,16 +1600,16 @@ $stationList->removeStation(new RadioStation(89)); // Will remove station 89
 👽 Mediator
 ========
 
-Real world example
+Un exemple dans le monde réel
 > A general example would be when you talk to someone on your mobile phone, there is a network provider sitting between you and them and your conversation goes through it instead of being directly sent. In this case network provider is mediator.
 
-In plain words
+En clair
 > Mediator pattern adds a third party object (called mediator) to control the interaction between two objects (called colleagues). It helps reduce the coupling between the classes communicating with each other. Because now they don't need to have the knowledge of each other's implementation.
 
-Wikipedia says
+D'après Wikipédia
 > In software engineering, the mediator pattern defines an object that encapsulates how a set of objects interact. This pattern is considered to be a behavioral pattern due to the way it can alter the program's running behavior.
 
-**Programmatic Example**
+**Exemple de programme**
 
 Here is the simplest example of a chat room (i.e. mediator) with users (i.e. colleagues) sending messages to each other.
 
@@ -1671,18 +1671,18 @@ $jane->send('Hey!');
 
 💾 Memento
 -------
-Real world example
+Un exemple dans le monde réel
 > Take the example of calculator (i.e. originator), where whenever you perform some calculation the last calculation is saved in memory (i.e. memento) so that you can get back to it and maybe get it restored using some action buttons (i.e. caretaker).
 
-In plain words
+En clair
 > Memento pattern is about capturing and storing the current state of an object in a manner that it can be restored later on in a smooth manner.
 
-Wikipedia says
+D'après Wikipédia
 > The memento pattern is a software design pattern that provides the ability to restore an object to its previous state (undo via rollback).
 
 Usually useful when you need to provide some sort of undo functionality.
 
-**Programmatic Example**
+**Exemple de programme**
 
 Lets take an example of text editor which keeps saving the state from time to time and that you can restore if you want.
 
@@ -1760,16 +1760,16 @@ $editor->getContent(); // This is the first sentence. This is second.
 
 😎 Observer
 --------
-Real world example
+Un exemple dans le monde réel
 > A good example would be the job seekers where they subscribe to some job posting site and they are notified whenever there is a matching job opportunity.   
 
-In plain words
+En clair
 > Defines a dependency between objects so that whenever an object changes its state, all its dependents are notified.
 
-Wikipedia says
+D'après Wikipédia
 > The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.
 
-**Programmatic example**
+**Exemple de programme**
 
 Translating our example from above. First of all we have job seekers that need to be notified for a job posting
 ```php
@@ -1849,16 +1849,16 @@ $jobPostings->addJob(new JobPost('Software Engineer'));
 
 🏃 Visitor
 -------
-Real world example
+Un exemple dans le monde réel
 > Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place and they can visit it. Visitor pattern lets you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
 
-In plain words
+En clair
 > Visitor pattern lets you add further operations to objects without having to modify them.
 
-Wikipedia says
+D'après Wikipédia
 > In object-oriented programming and software engineering, the visitor design pattern is a way of separating an algorithm from an object structure on which it operates. A practical result of this separation is the ability to add new operations to existing object structures without modifying those structures. It is one way to follow the open/closed principle.
 
-**Programmatic example**
+**Exemple de programme**
 
 Let's take an example of a zoo simulation where we have several different kinds of animals and we have to make them Sound. Let's translate this using visitor pattern
 
@@ -1989,16 +1989,16 @@ $dolphin->accept($jump);   // Walked on water a little and disappeared
 💡 Strategy
 --------
 
-Real world example
+Un exemple dans le monde réel
 > Consider the example of sorting, we implemented bubble sort but the data started to grow and bubble sort started getting very slow. In order to tackle this we implemented Quick sort. But now although the quick sort algorithm was doing better for large datasets, it was very slow for smaller datasets. In order to handle this we implemented a strategy where for small datasets, bubble sort will be used and for larger, quick sort.
 
-In plain words
+En clair
 > Strategy pattern allows you to switch the algorithm or strategy based upon the situation.
 
-Wikipedia says
+D'après Wikipédia
 > In computer programming, the strategy pattern (also known as the policy pattern) is a behavioural software design pattern that enables an algorithm's behavior to be selected at runtime.
 
-**Programmatic example**
+**Exemple de programme**
 
 Translating our example from above. First of all we have our strategy interface and different strategy implementations
 
@@ -2061,17 +2061,17 @@ $sorter->sort($dataset); // Output : Sorting using quick sort
 
 💢 State
 -----
-Real world example
+Un exemple dans le monde réel
 > Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes its behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
 
-In plain words
+En clair
 > It lets you change the behavior of a class when the state changes.
 
-Wikipedia says
+D'après Wikipédia
 > The state pattern is a behavioral software design pattern that implements a state machine in an object-oriented way. With the state pattern, a state machine is implemented by implementing each individual state as a derived class of the state pattern interface, and implementing state transitions by invoking methods defined by the pattern's superclass.
 > The state pattern can be interpreted as a strategy pattern which is able to switch the current strategy through invocations of methods defined in the pattern's interface.
 
-**Programmatic example**
+**Exemple de programme**
 
 Let's take an example of text editor, it lets you change the state of text that is typed i.e. if you have selected bold, it starts writing in bold, if italic then in italics etc.
 
@@ -2156,7 +2156,7 @@ $editor->type('Fifth line');
 📒 Template Method
 ---------------
 
-Real world example
+Un exemple dans le monde réel
 > Suppose we are getting some house built. The steps for building might look like
 > - Prepare the base of house
 > - Build the walls
@@ -2165,13 +2165,13 @@ Real world example
 
 > The order of these steps could never be changed i.e. you can't build the roof before building the walls etc but each of the steps could be modified for example walls can be made of wood or polyester or stone.
 
-In plain words
+En clair
 > Template method defines the skeleton of how a certain algorithm could be performed, but defers the implementation of those steps to the children classes.
 
-Wikipedia says
+D'après Wikipédia
 > In software engineering, the template method pattern is a behavioral design pattern that defines the program skeleton of an algorithm in an operation, deferring some steps to subclasses. It lets one redefine certain steps of an algorithm without changing the algorithm's structure.
 
-**Programmatic Example**
+**Exemple de programme**
 
 Imagine we have a build tool that helps us test, lint, build, generate build reports (i.e. code coverage reports, linting report etc) and deploy our app on the test server.
 
