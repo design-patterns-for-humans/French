@@ -334,13 +334,13 @@ Un exemple dans le monde réel
 > Imaginez que vous êtes chez Hardee's (une chaîne de restauration) et que vous passez une commande spécifique, Disons, un "Big Hardee" et ils le remettent sans poser *de questions*; c'est l'exemple d'une simple Factory. Mais il y a des cas où la logique de création pourrait impliquer plus d'étapes. Par exemple, vous voulez un ticket de métro personnalisé, Vous avez plusieurs options dans la façon de confectionner votre hamburger, par exemple, quel pain voulez-vous ? quels types de sauces aimeriez-vous ? quel fromage voudriez-vous ? etc. Dans de telles situations, le pattern Builder vient à la rescousse.
 
 En clair
-> Permets de créer des versions différentes (ou saveurs) d’un objet tout en évitant la pollution des constructeurs. Utile quand il pourrait y avoir plusieurs versions différentes d’un objet. Ou lorsqu’il y a beaucoup d’étapes dans la création d’un objet.
+> Permets de créer des versions différentes d’un objet tout en évitant la pollution des constructeurs. Utile quand il pourrait y avoir plusieurs versions différentes d’un objet. Ou lorsqu’il y a beaucoup d’étapes dans la création d’un objet.
 
-D'apres Wikipédia
+D'après Wikipédia
 > Le pattern Builder est un pattern de conception de logiciels de création  d’objet avec l’intention de trouver une solution à l’anti-pattern de constructeur télescopique (ou  condenser).
 > Télescopique : dont les éléments s'emboîtent les uns dans les autres.
 
-Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
+Ayant dit cela, laissez-moi ajouter un anti-pattern de constructeur télescopique. À un moment donné ou à un autre, nous avons vu un constructeur semblable à celui du constructeur ci-dessous:
 
 ```php
 public function __construct($size, $cheese = true, $pepperoni = true, $tomato = false, $lettuce = true)
@@ -348,11 +348,11 @@ public function __construct($size, $cheese = true, $pepperoni = true, $tomato = 
 }
 ```
 
-As you can see; the number of constructor parameters can quickly get out of hand and it might become difficult to understand the arrangement of parameters. Plus this parameter list could keep on growing if you would want to add more options in future. This is called telescoping constructor anti-pattern.
+Comme vous pouvez le voir; le nombre de paramètres du constructeur peut rapidement devenir incontrôlable et il pourrait être difficile de comprendre la disposition des paramètres. De plus, cette liste de paramètres pourrait continuer à augmenter si vous souhaitez ajouter d'autres options à l'avenir. C'est ce qu'on appelle un constructeur anti-pattern télescopique.
 
-**Programmatic Example**
+**Exemple de programme**
 
-The sane alternative is to use the builder pattern. First of all we have our burger that we want to make
+L'alternative raisonnable est d'utiliser le pattern Builder. Tout d'abord, nous avons notre hamburger que nous voulons créer.
 
 ```php
 class Burger
@@ -375,7 +375,7 @@ class Burger
 }
 ```
 
-And then we have the builder
+Et ensuite nous avons le constructeur
 
 ```php
 class BurgerBuilder
@@ -422,7 +422,7 @@ class BurgerBuilder
     }
 }
 ```
-And then it can be used as:
+Et alors, il peut être utilisé comme :
 
 ```php
 $burger = (new BurgerBuilder(14))
@@ -432,9 +432,9 @@ $burger = (new BurgerBuilder(14))
                     ->build();
 ```
 
-**When to use?**
+**Quand l'utiliser ?**
 
-When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that; factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
+Quand il peut avoir plusieurs versions d'un objet et pour éviter le constructeur télescopique. La principale différence par rapport au pattern Factory est là celle-ci; le pattern Factory doit être utilisé lorsque la création est un processus en une seule étape tandis que le pattern Builder doit être utilisé lorsque la création est un processus de plusieurs étapes.
 
 🐑 Prototype
 ------------
