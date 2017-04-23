@@ -558,13 +558,13 @@ $president2 = President::getInstance();
 var_dump($president1 === $president2); // true
 ```
 
-Structural Design Patterns
+Design Patterns Structurels
 ==========================
 En clair
-> Structural patterns are mostly concerned with object composition or in other words how the entities can use each other. Or yet another explanation would be, they help in answering "How to build a software component?"
+> Les Patterns Structurels s'occupent principalement de la composition entre objets ou de la manière dont les objets interagissent entre eux. Une autre explication serait qu'ils répondent à la question : "Comment construire un composoant logiciel ?"
 
 D'après Wikipédia
-> In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
+> En informatique, un patron d'architecture est un patron de conception, c'est-à-dire un modèle de référence qui sert de source d'inspiration lors de la conception de l'architecture d'un système ou d'un logiciel informatique en sous-éléments plus simples.
 
  * [Adapter](#-adapter)
  * [Bridge](#-bridge)
@@ -577,21 +577,21 @@ D'après Wikipédia
 🔌 Adapter
 -------
 Un exemple dans le monde réel
-> Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
-> Another example would be the famous power adapter; a three legged plug can't be connected to a two pronged outlet, it needs to use a power adapter that makes it compatible with the two pronged outlet.
-> Yet another example would be a translator translating words spoken by one person to another
+> Imaginons que vous souhaitiez transférer des images d'une carte mémoire à votre ordinateur. Pour les transférer, vous avez besoin d'un adaptateur compatible avec les ports de votre ordinateur de manière à y insérer votre carte mémoire. Dans ce cas, le lecteur de carte est un adaptateur.
+> Un autre exemple est le fameux adapteur secteur; un câble électrique doté d'une fiche à trois branches ne peut pas entrer dans une prise électrique à deux trous. On a besoin d'un adaptateur qui rend la fiche compatible avec la prise.
+> Encore un autre exemple serait le traducteur qui traduit les mots prononcés par une personne qui s'adresse à une autre
 
 En clair
-> Adapter pattern lets you wrap an otherwise incompatible object in an adapter to make it compatible with another class.
+> Le Pattern Adapter permet d'encapsuler un objet (incompatible en l'état) pour le rendre compatible avec une autre classe.
 
 D'après Wikipédia
-> In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
+> En génie logiciel, adaptateur (ou wrapper) est un patron de conception (design pattern) de type structure (structural). Il permet de convertir l'interface d'une classe en une autre interface que le client attend.
 
 **Exemple de programme**
 
-Consider a game where there is a hunter and he hunts lions.
+Soit un jeu dans lequel se trouve un chasseur chassant des lions.
 
-First we have an interface `Lion` that all types of lions have to implement
+Nous avons d'abord une interface `Lion` que tous les lions doivent implémenter.
 
 ```php
 interface Lion
@@ -613,7 +613,7 @@ class AsianLion implements Lion
     }
 }
 ```
-And hunter expects any implementation of `Lion` interface to hunt.
+Le chasseur chasse n'importe quelle implémentation de l'interface `Lion`.
 ```php
 class Hunter
 {
@@ -623,7 +623,7 @@ class Hunter
 }
 ```
 
-Now let's say we have to add a `WildDog` in our game so that hunter can hunt that also. But we can't do that directly because dog has a different interface. To make it compatible for our hunter, we will have to create an adapter that is compatible
+Maintenant, disons que nous voulions ajouter un `WildDog` dans notre jeu que le chasseur pourrait aussi chasser. Malheureusement nous ne pouvons pas l'ajouter directement car ce chien a une interface différente. Pour le rendre compatible avec notre chasseur, nous devons créer un Adapter compatible.
 
 ```php
 // This needs to be added to the game
@@ -650,7 +650,7 @@ class WildDogAdapter implements Lion
     }
 }
 ```
-And now the `WildDog` can be used in our game using `WildDogAdapter`.
+A présent le `WildDog` peut être utilisé dans notre jeu en utilisant `WildDogAdapter`.
 
 ```php
 $wildDog = new WildDog();
