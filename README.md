@@ -759,17 +759,17 @@ echo $careers->getContent(); // "Careers page in Dark Black";
 -----------------
 
 Un exemple dans le monde réel
-> Every organization is composed of employees. Each of the employees has the same features i.e. has a salary, has some responsibilities, may or may not report to someone, may or may not have some subordinates etc.
+> Toutes les entreprises sont composées d'employés. Chaque employé possède les mêmes caractéristiques c-à-d un salaire, des responsabilités, un supérieur hiérarchique, des subordonnés, etc.
 
 En clair
-> Composite pattern lets clients treat the individual objects in a uniform manner.
+> Le Pattern Composite permet au client de traiter chaque objet de manière uniforme.
 
 D'après Wikipédia
-> In software engineering, the composite pattern is a partitioning design pattern. The composite pattern describes that a group of objects is to be treated in the same way as a single instance of an object. The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies. Implementing the composite pattern lets clients treat individual objects and compositions uniformly.
+> En génie logiciel, un objet composite est un patron de conception (design pattern) structurel. Ce patron permet de concevoir une structure d'arbre, par exemple un arbre binaire en limitant à deux le nombre de sous-éléments.
 
 **Exemple de programme**
 
-Taking our employees example from above. Here we have different employee types
+En reprenant l'exemple des employés ci-dessus, nous avons plusieurs types d'employé :
 
 ```php
 interface Employee
@@ -846,7 +846,7 @@ class Designer implements Employee
 }
 ```
 
-Then we have an organization which consists of several different types of employees
+Ensuite nous avons une entreprise qui consiste simplement en plusieurs employés :
 
 ```php
 class Organization
@@ -871,7 +871,7 @@ class Organization
 }
 ```
 
-And then it can be used as
+On peut ensuite l'utiliser comme ceci :
 
 ```php
 // Prepare the employees
