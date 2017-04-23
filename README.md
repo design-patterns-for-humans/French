@@ -663,19 +663,19 @@ $hunter->hunt($wildDogAdapter);
 🚡 Bridge
 ------
 Un exemple dans le monde réel
-> Consider you have a website with different pages and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
+> Considérons que vous ayez un site internet constitué de différentes pages et que vous êtes censé permettre à l'utilisateur de changer le thème du site. Comment feriez-vous ?Créer une copie de chaque page pour chaque thème ou juste créer des thèmes chargés en fonction des préférences de l'utilisateur ? Le Pattern Bridge vous permet de réaliser la seconde solution c-à-d :
 
 ![With and without the bridge pattern](https://cloud.githubusercontent.com/assets/11269635/23065293/33b7aea0-f515-11e6-983f-98823c9845ee.png)
 
 En clair
-> Bridge pattern is about preferring composition over inheritance. Implementation details are pushed from a hierarchy to another object with a separate hierarchy.
+> Le Pattern Bridge consiste à privilégier la composition par rapport à l'héritage. Les détails d'implémentation sont déplacés d'une hiérarchie à un autre objet doté d'une hiérarchie séparée.
 
 D'après Wikipédia
-> The bridge pattern is a design pattern used in software engineering that is meant to "decouple an abstraction from its implementation so that the two can vary independently"
+> Le pont est un patron de conception de la famille structuration, qui permet de découpler l'interface d'une classe et son implémentation. La partie concrète (implémentation réelle) peut alors varier, indépendamment de celle abstraite (définition virtuelle), tant qu'elle respecte le contrat de réécriture associé qui les lie (obligation de se conformer aux signatures des fonctions/méthodes, et de leurs fournir un corps physique d'implémentation).
 
 **Exemple de programme**
 
-Translating our WebPage example from above. Here we have the `WebPage` hierarchy
+Traduisons notre exemple de pages Web sous forme d'une hiérarchie de `WebPage` :
 
 ```php
 interface WebPage
@@ -714,7 +714,7 @@ class Careers implements WebPage
     }
 }
 ```
-And the separate theme hierarchy
+Voici la hiérarchie des thèmes :
 ```php
 
 interface Theme
@@ -744,7 +744,7 @@ class AquaTheme implements Theme
     }
 }
 ```
-And both the hierarchies
+Une fois réunies, on obtient :
 ```php
 $darkTheme = new DarkTheme();
 
