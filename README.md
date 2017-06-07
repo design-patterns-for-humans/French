@@ -892,17 +892,17 @@ echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 22000
 
 Un exemple dans le monde réel
 
-> Imagine you run a car service shop offering multiple services. Now how do you calculate the bill to be charged? You pick one service and dynamically keep adding to it the prices for the provided services till you get the final cost. Here each type of service is a decorator.
+> Imaginez que vous gérez un magasin de service automobile offrant de multiples services. Maintenant, comment calculez-vous le montant à facturer? Vous choisissez un service et continuez à y ajouter les prix pour les services fournis jusqu'à ce que vous obteniez le coût final. Ici, chaque type de service est un décorateur.
 
 En clair
-> Decorator pattern lets you dynamically change the behavior of an object at run time by wrapping them in an object of a decorator class.
+> Le pattern Decorator vous permet de modifier dynamiquement le comportement d'un objet au moment de l'exécution en les enveloppant dans un objet d'une classe de décorateur.
 
 D'après Wikipédia
-> In object-oriented programming, the decorator pattern is a design pattern that allows behavior to be added to an individual object, either statically or dynamically, without affecting the behavior of other objects from the same class. The decorator pattern is often useful for adhering to the Single Responsibility Principle, as it allows functionality to be divided between classes with unique areas of concern.
+> Dans la programmation orientée objet, le pattern Décorateur est un pattern de conception  de logiciels qui permet d'ajouter un comportement à un objet individuel, de manière statique ou dynamique, sans affecter le comportement d'autres objets de la même classe. Le pattern Décorateur est souvent utile pour adhérer au principe de responsabilité unique, car il permet de répartir les fonctionnalités entre les classes avec des domaines de préoccupation uniques.
 
 **Exemple de programme**
 
-Lets take coffee for example. First of all we have a simple coffee implementing the coffee interface
+Prenons l’exemple d’un café. Tout d'abord, nous avons un simple café (SimpleCoffee) qui implémente l'interface café
 
 ```php
 interface Coffee
@@ -924,7 +924,7 @@ class SimpleCoffee implements Coffee
     }
 }
 ```
-We want to make the code extensible to allow options to modify it if required. Lets make some add-ons (decorators)
+Nous voulons rendre le code extensible pour permettre aux options de le modifier si nécessaire. Faisons quelques add-ons (décorateurs)
 ```php
 class MilkCoffee implements Coffee
 {
@@ -987,7 +987,7 @@ class VanillaCoffee implements Coffee
 }
 ```
 
-Lets make a coffee now
+Faisons un café maintenant
 
 ```php
 $someCoffee = new SimpleCoffee();
