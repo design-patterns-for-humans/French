@@ -1011,17 +1011,17 @@ echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
 ----------------
 
 Un exemple dans le monde réel
-> How do you turn on the computer? "Hit the power button" you say! That is what you believe because you are using a simple interface that computer provides on the outside, internally it has to do a lot of stuff to make it happen. This simple interface to the complex subsystem is a facade.
+> Comment démarrer l’ordinateur ? "Appuyer sur le bouton d’alimentation" dites-vous! C’est ce que vous croyez parce que vous utilisez une interface simple que l’ordinateur fournit à l’extérieur, intérieurement, il doit faire beaucoup de choses pour que cela se produise. Cette interface simple au sous-système complexe est une façade.
 
 En clair
-> Facade pattern provides a simplified interface to a complex subsystem.
+> Le pattern Façade fournit une interface simplifiée à un sous-système complexe. 
 
 D'après Wikipédia
-> A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
+> Une façade est un objet qui fournit une interface simplifiée à un grand nombre de codes, comme une bibliothèque de classe.
 
 **Exemple de programme**
 
-Taking our computer example from above. Here we have the computer class
+Prenons l’exemple de l’ordinateur ci-dessus. Nous avons ici la classe ordinateur (Computer)
 
 ```php
 class Computer
@@ -1062,7 +1062,7 @@ class Computer
     }
 }
 ```
-Here we have the facade
+Nous avons ici la façade
 ```php
 class ComputerFacade
 {
@@ -1089,7 +1089,7 @@ class ComputerFacade
     }
 }
 ```
-Now to use the facade
+Maintenant, utiliser la façade.
 ```php
 $computer = new ComputerFacade(new Computer());
 $computer->turnOn(); // Ouch! Beep beep! Loading.. Ready to be used!
