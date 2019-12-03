@@ -125,7 +125,7 @@ En clair
 > Il fournit une façon de déléguer la logique d'instanciation aux classes enfant.
 
 D'après Wikipédia
-> Dans la programmation à base de classe, le pattern factory method est un pattern créationnel qui utilise des patterns factory pour résoudre le problème de création d'objets sans devoir spécifier la classe exacte de l'objet qui sera créé. Pour ce faire, ont créé des objets par l’appel d’une méthode factory - ou spécifié dans une interface et implémenté dans une classe enfant, soit l'implémenter dans une classe de base et éventuellement surcharger (redéfinir) par des classes dérivées plutôt que d'appeler un constructeur.
+> Dans la programmation à base de classe, le pattern factory method est un pattern créationnel qui utilise des patterns factory pour résoudre le problème de création d'objets sans devoir spécifier la classe exacte de l'objet qui sera créé. Pour ce faire, on créé des objets par l’appel d’une méthode factory - soit spécifiée dans une interface et implémentée dans une classe enfant, soit l'implémentée dans une classe de base et éventuellement surcharger (redéfinir) par des classes dérivées plutôt que d'appeler un constructeur.
 
  **Exemple de programme**
 
@@ -331,7 +331,7 @@ Quand il y a des dépendances interdépendantes avec une logique de création pa
 👷 Builder
 --------------------------------------------
 Un exemple dans le monde réel
-> Imaginez que vous êtes chez Hardee's (une chaîne de restauration) et que vous passez une commande spécifique, Disons, un "Big Hardee" et ils le remettent sans poser *de questions*; c'est l'exemple d'une simple Factory. Mais il y a des cas où la logique de création pourrait impliquer plus d'étapes. Par exemple, vous voulez un ticket de métro personnalisé, Vous avez plusieurs options dans la façon de confectionner votre hamburger, par exemple, quel pain voulez-vous ? quels types de sauces aimeriez-vous ? quel fromage voudriez-vous ? etc. Dans de telles situations, le pattern Builder vient à la rescousse.
+> Imaginez que vous êtes chez Hardee's (une chaîne de restauration) et que vous passez une commande spécifique, Disons, un "Big Hardee" et ils le remettent sans poser *de questions*; c'est l'exemple d'une simple Factory. Mais il y a des cas où la logique de création pourrait impliquer plus d'étapes. Par exemple, vous voulez un Subway personnalisé, vous avez plusieurs options dans la façon de confectionner votre sandwich, par exemple, quel pain voulez-vous ? quels types de sauces aimeriez-vous ? quel fromage voudriez-vous ? etc. Dans de telles situations, le pattern Builder vient à la rescousse.
 
 En clair
 > Permets de créer des versions différentes d’un objet tout en évitant la pollution des constructeurs. Utile quand il pourrait y avoir plusieurs versions différentes d’un objet. Ou lorsqu’il y a beaucoup d’étapes dans la création d’un objet.
