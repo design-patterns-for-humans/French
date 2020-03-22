@@ -336,7 +336,7 @@ En clair
 > Un Builder permet de créer des versions différentes d’un objet tout en évitant de polluer le constructeur. Utile quand un objet existe en de multiples variations, ou lorsque sa création nécessite beaucoup d’étapes.
 
 D'après Wikipédia
-> Le pattern Builder est un design pattern de création d’objet avec l’intention de trouver une solution à l’anti-pattern de constructeur télescopique (ou  condenser).
+> Le pattern Builder est un patron de conception de création d’objet avec l’intention de trouver une solution à l’anti-pattern de constructeur télescopique (ou  condenser).
 
 Pour illustrer celà, voici à quoi ressemble l'anti-pattern du constructeur télescopique. À un moment où à un autre, nous avons tous vu/écrit ce genre de constructeur :
 ```php
@@ -510,7 +510,7 @@ En clair
 > S'assure qu'une classe ne peut être instanciée qu'une seule et unique fois.
 
 D'après Wikipédia
-> En génie logiciel, le singleton est un design pattern dont l'objectif est de restreindre l'instanciation d'une classe à un seul objet (ou bien à quelques objets seulement). Il est utilisé lorsqu'on a besoin exactement d'un objet pour coordonner des opérations dans un système.
+> En génie logiciel, le singleton est un patron de conception dont l'objectif est de restreindre l'instanciation d'une classe à un seul objet (ou bien à quelques objets seulement). Il est utilisé lorsqu'on a besoin exactement d'un objet pour coordonner des opérations dans un système.
 
 Le pattern Singleton est en fait considéré comme un anti-pattern et il faut éviter d'en abuser. Il n'est pas nécessairement mauvais et présente quelques cas d'utilisation valides, mais il doit être utilisé avec précaution car il introduit un état global dans l'application. Des changements à l'intérieur du Singleton pourraient avoir des effets secondaires à d'autres endroits et le debug peut s'avérer difficile. Une autre mauvaise conséquence de son utilisation est qu'il rend le code fortement couplé et les tests unitaires s'en retrouvent d'autant plus compliqués.
 
@@ -559,10 +559,10 @@ var_dump($president1 === $president2); // true
 Design Patterns Structurels
 ==========================
 En clair
-> Les Patterns Structurels s'occupent principalement de la composition entre objets ou de la manière dont les objets interagissent entre eux. Une autre explication serait qu'ils répondent à la question : "Comment construire un composoant logiciel ?"
+> Les Patterns Structurels (ou d'architecture) s'occupent principalement de la composition entre objets ou de la manière dont les objets interagissent entre eux. Une autre explication serait qu'ils répondent à la question : "Comment construire un composant logiciel ?"
 
 D'après Wikipédia
-> En informatique, un patron d'architecture est un patron de conception, c'est-à-dire un modèle de référence qui sert de source d'inspiration lors de la conception de l'architecture d'un système ou d'un logiciel informatique en sous-éléments plus simples.
+> En informatique, un pattern structurel est un patron de conception, c'est-à-dire un modèle de référence qui sert de source d'inspiration lors de la conception de l'architecture d'un système ou d'un logiciel informatique en sous-éléments plus simples.
 
  * [Adapter](#-adapter)
  * [Bridge](#-bridge)
@@ -576,14 +576,14 @@ D'après Wikipédia
 -------
 Un exemple dans le monde réel
 > Imaginons que vous souhaitiez transférer des images d'une carte mémoire à votre ordinateur. Pour les transférer, vous avez besoin d'un adaptateur compatible avec les ports de votre ordinateur de manière à y insérer votre carte mémoire. Dans ce cas, le lecteur de carte est un adaptateur.
-> Un autre exemple est le fameux adapteur secteur; un câble électrique doté d'une fiche à trois branches ne peut pas entrer dans une prise électrique à deux trous. On a besoin d'un adaptateur qui rend la fiche compatible avec la prise.
-> Encore un autre exemple serait le traducteur qui traduit les mots prononcés par une personne qui s'adresse à une autre
+> Un autre exemple est le fameux adaptateur secteur : un câble électrique doté d'une fiche à trois branches ne peut pas entrer dans une prise électrique à deux trous. On a besoin d'un adaptateur qui rend la fiche compatible avec la prise.
+> Un exemple supplémentaire serait celui du traducteur, qui traduit les mots prononcés par une personne dans la langue d'une autre.
 
 En clair
 > Le Pattern Adapter permet d'encapsuler un objet (incompatible en l'état) pour le rendre compatible avec une autre classe.
 
 D'après Wikipédia
-> En génie logiciel, adaptateur (ou wrapper) est un patron de conception (design pattern) de type structure (structural). Il permet de convertir l'interface d'une classe en une autre interface que le client attend.
+> En génie logiciel, Adapter (ou Wrapper) est un patron de conception de type structurel. Il permet de convertir l'interface d'une classe en une autre interface que le client attend.
 
 **Exemple de programme**
 
@@ -611,6 +611,7 @@ class AsianLion implements Lion
     }
 }
 ```
+
 Le chasseur chasse n'importe quelle implémentation de l'interface `Lion`.
 ```php
 class Hunter
@@ -621,10 +622,10 @@ class Hunter
 }
 ```
 
-Maintenant, disons que nous voulions ajouter un `WildDog` dans notre jeu que le chasseur pourrait aussi chasser. Malheureusement nous ne pouvons pas l'ajouter directement car ce chien a une interface différente. Pour le rendre compatible avec notre chasseur, nous devons créer un Adapter compatible.
+Maintenant nous voulons ajouter un `WildDog` dans notre jeu, que le chasseur pourrait aussi chasser. Malheureusement nous ne pouvons pas l'ajouter directement car ce chien a une interface différente. Pour le rendre compatible avec notre chasseur, nous devons créer un Adapter compatible.
 
 ```php
-// This needs to be added to the game
+// Ceci doit être ajouté au jeu
 class WildDog
 {
     public function bark()
@@ -632,7 +633,7 @@ class WildDog
     }
 }
 
-// Adapter around wild dog to make it compatible with our game
+// Adapter encapsule WildDog pour le rendre compatible avec notre jeu
 class WildDogAdapter implements Lion
 {
     protected $dog;
@@ -648,8 +649,8 @@ class WildDogAdapter implements Lion
     }
 }
 ```
-A présent le `WildDog` peut être utilisé dans notre jeu en utilisant `WildDogAdapter`.
 
+A présent le `WildDog` peut être utilisé dans notre jeu en utilisant `WildDogAdapter`
 ```php
 $wildDog = new WildDog();
 $wildDogAdapter = new WildDogAdapter($wildDog);
@@ -661,15 +662,15 @@ $hunter->hunt($wildDogAdapter);
 🚡 Bridge
 ------
 Un exemple dans le monde réel
-> Considérons que vous ayez un site internet constitué de différentes pages et que vous êtes censé permettre à l'utilisateur de changer le thème du site. Comment feriez-vous ?Créer une copie de chaque page pour chaque thème ou juste créer des thèmes chargés en fonction des préférences de l'utilisateur ? Le Pattern Bridge vous permet de réaliser la seconde solution c-à-d :
+> Considérons que vous ayez un site internet constitué de différentes pages et que vous êtes censé permettre à l'utilisateur de changer le thème du site. Comment feriez-vous : créer une copie de chaque page pour chaque thème, ou juste créer des thèmes chargés en fonction des préférences de l'utilisateur ? Le pattern Bridge vous permet de réaliser la seconde solution :
 
 ![With and without the bridge pattern](https://cloud.githubusercontent.com/assets/11269635/23065293/33b7aea0-f515-11e6-983f-98823c9845ee.png)
 
 En clair
-> Le Pattern Bridge consiste à privilégier la composition par rapport à l'héritage. Les détails d'implémentation sont déplacés d'une hiérarchie à un autre objet doté d'une hiérarchie séparée.
+> Le pattern Bridge consiste à privilégier la composition par rapport à l'héritage. Les détails d'implémentation sont déplacés de la hiérarchie de l'objet courant, vers un autre objet doté d'une hiérarchie différente.
 
 D'après Wikipédia
-> Le pont est un patron de conception de la famille structuration, qui permet de découpler l'interface d'une classe et son implémentation. La partie concrète (implémentation réelle) peut alors varier, indépendamment de celle abstraite (définition virtuelle), tant qu'elle respecte le contrat de réécriture associé qui les lie (obligation de se conformer aux signatures des fonctions/méthodes, et de leurs fournir un corps physique d'implémentation).
+> Le pont est un patron de conception structurel, qui permet de découpler l'interface d'une classe et son implémentation. La partie concrète (implémentation réelle) peut alors varier, indépendamment de celle abstraite (définition virtuelle), tant qu'elle respecte le contrat de réécriture associé qui les lie (obligation de se conformer aux signatures des fonctions/méthodes, et de leurs fournir un corps physique d'implémentation).
 
 **Exemple de programme**
 
@@ -712,9 +713,9 @@ class Careers implements WebPage
     }
 }
 ```
+
 Voici la hiérarchie des thèmes :
 ```php
-
 interface Theme
 {
     public function getColor();
@@ -742,7 +743,8 @@ class AquaTheme implements Theme
     }
 }
 ```
-Une fois réunies, on obtient :
+
+Une fois les deux réunis, on obtient :
 ```php
 $darkTheme = new DarkTheme();
 
@@ -757,17 +759,17 @@ echo $careers->getContent(); // "Careers page in Dark Black";
 -----------------
 
 Un exemple dans le monde réel
-> Toutes les entreprises sont composées d'employés. Chaque employé possède les mêmes caractéristiques c-à-d un salaire, des responsabilités, un supérieur hiérarchique, des subordonnés, etc.
+> Toutes les entreprises sont composées d'employés. Chaque employé possède les mêmes caractéristiques : un salaire, des responsabilités, un supérieur hiérarchique, des subordonnés, etc.
 
 En clair
 > Le Pattern Composite permet au client de traiter chaque objet de manière uniforme.
 
 D'après Wikipédia
-> En génie logiciel, un objet composite est un patron de conception (design pattern) structurel. Ce patron permet de concevoir une structure d'arbre, par exemple un arbre binaire en limitant à deux le nombre de sous-éléments.
+> En génie logiciel, un objet Composite est un patron de conception structurel. Ce patron permet de concevoir une structure d'arbre, par exemple un arbre binaire en limitant à deux le nombre de sous-éléments.
 
 **Exemple de programme**
 
-En reprenant l'exemple des employés ci-dessus, nous avons plusieurs types d'employé :
+En reprenant l'exemple ci-dessus, nous avons plusieurs types d'employés :
 
 ```php
 interface Employee
@@ -844,7 +846,7 @@ class Designer implements Employee
 }
 ```
 
-Ensuite nous avons une entreprise qui consiste simplement en plusieurs employés :
+Ensuite nous avons une entreprise qui est simplement consistuée de plusieurs employés :
 
 ```php
 class Organization
@@ -870,13 +872,12 @@ class Organization
 ```
 
 On peut ensuite l'utiliser comme ceci :
-
 ```php
-// Prepare the employees
-$john = new Developer('John Doe', 12000);
-$jane = new Designer('Jane', 10000);
+// On prepare les employés
+$john = new Developer('John', 10000);
+$jane = new Designer('Jane', 12000);
 
-// Add them to organization
+// On les ajoute à l'entreprise
 $organization = new Organization();
 $organization->addEmployee($john);
 $organization->addEmployee($jane);
@@ -889,18 +890,17 @@ echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 22000
 
 Un exemple dans le monde réel
 
-> Imaginez que vous gérez un magasin de service automobile offrant de multiples services. Maintenant, comment calculez-vous le montant à facturer? Vous choisissez un service et continuez à y ajouter les prix pour les services fournis jusqu'à ce que vous obteniez le coût final. Ici, chaque type de service est un décorateur.
+> Imaginez que vous gériez un magasin de services automobiles. Comment calculez-vous le montant à facturer ? Vous choisissez un service et continuez à y ajouter les prix pour les services fournis jusqu'à ce que vous obteniez le coût final. Ici, chaque type de service est un décorateur.
 
 En clair
 > Le pattern Decorator vous permet de modifier dynamiquement le comportement d'un objet au moment de l'exécution en les enveloppant dans un objet d'une classe de décorateur.
 
 D'après Wikipédia
-> Dans la programmation orientée objet, le pattern Décorateur est un design pattern  de logiciels qui permet d'ajouter un comportement à un objet individuel, de manière statique ou dynamique, sans affecter le comportement d'autres objets de la même classe. Le pattern Décorateur est souvent utile pour adhérer au principe de responsabilité unique, car il permet de répartir les fonctionnalités entre les classes avec des domaines de préoccupation uniques.
+> Dans la programmation orientée objet, le pattern Decorator est un patron de conception logicielle qui permet d'ajouter un comportement à un objet individuel, de manière statique ou dynamique, sans affecter le comportement d'autres objets de la même classe. Le pattern Decorator est souvent utile pour adhérer au principe de responsabilité unique, car il permet de répartir les fonctionnalités entre les classes avec des domaines de préoccupation uniques.
 
 **Exemple de programme**
 
 Prenons l’exemple d’un café. Tout d'abord, nous avons un simple café (SimpleCoffee) qui implémente l'interface café
-
 ```php
 interface Coffee
 {
@@ -921,6 +921,7 @@ class SimpleCoffee implements Coffee
     }
 }
 ```
+
 Nous voulons rendre le code extensible pour permettre aux options de le modifier si nécessaire. Faisons quelques add-ons (décorateurs)
 ```php
 class MilkCoffee implements Coffee
@@ -985,7 +986,6 @@ class VanillaCoffee implements Coffee
 ```
 
 Faisons un café maintenant
-
 ```php
 $someCoffee = new SimpleCoffee();
 echo $someCoffee->getCost(); // 10
@@ -1008,17 +1008,17 @@ echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
 ----------------
 
 Un exemple dans le monde réel
-> Comment démarrer l’ordinateur ? "Appuyer sur le bouton d’alimentation" dites-vous! C’est ce que vous croyez parce que vous utilisez une interface simple que l’ordinateur fournit à l’extérieur, intérieurement, il doit faire beaucoup de choses pour que cela se produise. Cette interface simple au sous-système complexe est une façade.
+> Comment démarrer un ordinateur ? "Appuyer sur le bouton d’alimentation" dites-vous ?! C’est ce que vous croyez parce que vous utilisez une interface simple que l’ordinateur vous fournit. À l'intérieur, il se passe de nopbreuses choses pour que l'ordinateur démarre réellement. Cette interface simple au sous-système complexe est une façade.
 
 En clair
-> Le pattern Façade fournit une interface simplifiée à un sous-système complexe. 
+> Le pattern Facade fournit une interface simplifiée à un sous-système complexe. 
 
 D'après Wikipédia
-> Une façade est un objet qui fournit une interface simplifiée à un grand nombre de codes, comme une bibliothèque de classe.
+> Une Facade est un objet qui fournit une interface simplifiée à un grand nombre de codes, comme une bibliothèque de classe.
 
 **Exemple de programme**
 
-Prenons l’exemple de l’ordinateur ci-dessus. Nous avons ici la classe ordinateur (Computer)
+Prenons l’exemple de l’ordinateur ci-dessus, nous avons ici sa classe (Computer)
 
 ```php
 class Computer
@@ -1059,7 +1059,8 @@ class Computer
     }
 }
 ```
-Nous avons ici la façade
+
+En voici la Facade
 ```php
 class ComputerFacade
 {
@@ -1086,7 +1087,8 @@ class ComputerFacade
     }
 }
 ```
-Maintenant, utiliser la façade.
+
+Maintenant, nous pouvons utiliser la Facade 
 ```php
 $computer = new ComputerFacade(new Computer());
 $computer->turnOn(); // Ouch! Beep beep! Loading.. Ready to be used!
