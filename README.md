@@ -5,16 +5,16 @@
 🎉 Introduction ultra-simplifiée aux design patterns! 🎉
 </p>
 <p align="center">
-Un sujet qui peut facilment faire peur. Ici je vais essayé de vous les faire intéger ( moi aussi par la même occasion ) en les expliquant de la manière la plus <i>simple</i> possible.
+Un sujet qui peut facilement faire peur. Je vais ici essayer de vous les faire comprendre (et moi aussi par la même occasion) en les expliquant de la manière la plus <i>simple</i> possible.
 </p>
 ***
 
 🚀 Introduction
 =================
 
-Les design patterns (patrons de conception en Français) sont des solutions à des problèmes récurrents; **des directives pour surmonter certains problèmes**. Ce ne sont pas des classes, packages ou libraries que vous pouvez connnecter à votre application et attendre que la magie fasse effet.Ce sont, plutôt, des directives pour résoudre certains problèmes dans certaines situations.
+Les design patterns (patrons de conception en Français) sont des solutions à des problèmes récurrents. Ce ne sont pas des classes, packages ou libraries que vous pourrez connecter à votre application, pour ensuite attendre que la magie fasse effet. Ce sont plutôt des **directives pour résoudre certains problèmes** dans certaines situations.
 
-> Les design patterns sont des solutions récurrentes à des problèmes récurrents; des directives pour résourdre certains problèmes.
+> Les design patterns sont des solutions récurrentes à des problèmes récurrents, des directives pour résoudre certains problèmes.
 
 Wikipedia les décrit ainsi :
 
@@ -22,27 +22,27 @@ Wikipedia les décrit ainsi :
 
 ⚠️ Faites Attention
 -------------------
-- Les design patterns ne sont pas des solutions-miracles à tous vos problèmes.
-- N'essayez pas de les forcer; de mauvaises choses vont se produire si vous le faites. Gardez à l'esprit que les design patterns sont des solutions **à** des problèmes et non pas des solutions pour **trouver** des problèmes; alors n'y pensez pas trop.
-- S'ils sont utilisés à un endroit correct et de manière correcte, ils peuvent s'avérer salvateurs; dans le cas contraire ils peuvent entraîner un désordre horrible dans un code.
+- Les design patterns ne sont pas des solutions miracles à tous vos problèmes.
+- N'essayez pas de vous forcer à les utiliser dans un projet. Gardez à l'esprit que les design patterns sont des solutions **à** des problèmes et non pas des solutions pour **trouver** des problèmes.
+- S'ils sont utilisés au bon endroit et de la bonne manière, ils peuvent s'avérer salvateurs ; dans le cas contraire ils risquent d'entraîner une complexification du code inutile et dommageable.
 
-> Notez également que les exemples de code ci-dessous sont en PHP-7, cependant cela ne devrait pas vous arrêter parce que les concepts sont identiques. De plus la **rédaction pour d'autres langages est en cours**.
+> Notez également que les exemples de code ci-dessous sont en PHP 7. Peut importe le langage que vous utilisez, les concepts sont identiques. De plus la **rédaction pour d'autres langages est en cours**.
 
 Types de design patterns
 -----------------------
 
-* [Création](#creational-design-patterns)
+* [Créationnel](#creational-design-patterns)
 * [Structurel](#structural-design-patterns)
 * [Comportemental](#behavioral-design-patterns)
 
-Design patterns de création
-===========================
+Design patterns créationnels
+============================
 
 En clair
-> Les patterns de créations sont centrés sur la façon d'instancier un objet ou un groupe d'objets liés.
+> Les patterns créationnels sont centrés sur la façon d'instancier un objet ou un groupe d'objets liés.
 
-Wikipedia dit
-> Dans le génie logiciel, les design patterns de créations sont des patterns de conception qui traitent des mécanismes de création d'objet en essayant de créer les objets d'une façon appropriée à la situation. La forme de base de création d'objet pourrait entraîner des problèmes de conception ou ajouter de la complexité à la conception. Les design patterns de création résolvent ce problème en contrôlant la création d'objets d'une certaine façon.
+D'après Wikipédia
+> Dans le génie logiciel, les design patterns de création sont des patrons de conception qui traitent des mécanismes de création d'objet en essayant de créer les objets d'une façon appropriée à la situation. La forme de base de la création d'objet pourrait entraîner des problèmes de conception ou ajouter de la complexité à la conception. Les design patterns de création résolvent ce problème en contrôlant la création d'objets d'une certaine manière.
 
  * [Simple Factory](#-simple-factory)
  * [Factory Method](#-factory-method)
@@ -54,17 +54,17 @@ Wikipedia dit
 🏠 Simple Factory
 --------------
 Un exemple dans le monde réel
-> Considérez que vous construisez une maison et vous avez besoin de portes. Ce serait un gâchis si chaque fois que vous avez besoin d'une porte, vous mettez vos vêtements de menuisier (charpentier) et commencez à construire une porte dans votre maison. Au lieu de cela vous le faites dans une usine.
+> Considérez que vous construisez une maison et vous avez besoin de portes. Ce serait un gâchis si chaque fois que vous avez besoin d'une porte, vous mettiez vos vêtements de menuisier(ère) et commenciez à construire une porte dans votre maison. Au lieu de cela vous le faites dans une usine.
 
 En clair
-> Simple factory génère simplement une instance pour le client sans exposer toute la logique d'instanciation au client.
+> Simple Factory génère simplement une instance pour le client sans exposer toute la logique d'instanciation au client.
 
 D'après Wikipédia
-> Dans la programmation orientée objet (POO), un factory est un objet qui créer d'autres objets – formellement un factory est une fonction ou méthode qui retourne des objets d'un prototype ou d'une classe variable à partir d'un appel de méthode, qui est supposé être "new".
+> Dans la programmation orientée objet (POO), une Factory est un objet qui crée d'autres objets – formellement une Factory est une fonction ou méthode qui retourne des objets d'un prototype ou d'une classe variable à partir d'un appel de méthode, qui est supposé être "new".
 
 **Exemple de programme**
 
-Tout d'abord, nous avons une interface de porte (Door) et l'implémentation
+Tout d'abord, nous avons une interface de porte (Door) et son implémentation
 ```php
 interface Door 
 {
@@ -94,7 +94,7 @@ class WoodenDoor implements Door
     }
 }
 ```
-Alors nous avons notre factory de porte (DoorFactory) qui construit la porte et la renvoie
+Alors nous avons notre Factory de porte (DoorFactory) qui construit la porte et la renvoie
 ```php
 class DoorFactory
 {
@@ -104,33 +104,32 @@ class DoorFactory
     }
 }
 ```
-Et il peut être utilisé comme
+Elle peut être utilisée comme ceci
 ```php
 $door = DoorFactory::makeDoor(100, 200);
 echo 'Width: ' . $door->getWidth();
 echo 'Height: ' . $door->getHeight();
 ```
 
-**Quand l'utiliser?**
+**Quand l'utiliser ?**
 
-Quand la création d'objet n'est pas seulement une affectation et implique une certaine logique, cela a du sens de le mettre dans un factory au lieu de répéter le même code partout.
+Quand la création d'objet n'est pas seulement une affectation et implique une certaine logique, cela a du sens de déplacer cette logique dans une Factory plutôt que de répéter le même code partout.
 
 🏭 Factory Method
 --------------
 
 Un exemple dans le monde réel
-> Considérez un directeur d'embauche. C'est impossible pour une personne d'interviewer pour chacun des postes. Basée sur l'ouverture du travail, elle doit décider et déléguer les étapes de l'entretien (entrevue) à différentes personnes.
+> Considérez le travail d'un(e) DRH dans une grande structure. Il est impossible pour une seule personne de conduire les entretiens pour tous les types de postes. Elle doit alors définir les étapes d'un entretien, et les déléguer à différentes personnes compétentes.
 
 En clair
-> Il fournit une façon de déléguer la logique d'instanciation aux classes enfant.
+> Factory Method fournit un moyen de déléguer la logique d'instanciation aux classes enfants.
 
 D'après Wikipédia
-> Dans la programmation à base de classe, le pattern factory method est un pattern créationnel qui utilise des patterns factory pour résoudre le problème de création d'objets sans devoir spécifier la classe exacte de l'objet qui sera créé. Pour ce faire, ont créé des objets par l’appel d’une méthode factory - ou spécifié dans une interface et implémenté dans une classe enfant, soit l'implémenter dans une classe de base et éventuellement surcharger (redéfinir) par des classes dérivées plutôt que d'appeler un constructeur.
+> Dans la programmation à base de classe, le pattern Factory Method est un pattern créationnel qui utilise des patterns Factory pour résoudre le problème de création d'objets sans devoir spécifier la classe exacte de l'objet qui sera créé. Pour ce faire, on crée des objets via l’appel d’une Factory Method - soit spécifiée dans une interface et implémentée dans une classe enfant, soit implémentée dans une classe de base et éventuellement surchargée par des classes dérivées plutôt que d'appeler un constructeur.
 
  **Exemple de programme**
 
-Prenons l'exemple de notre directeur d'embauche. Tout d'abord, nous disposons d'une interface d'intervieweur et de certaines implémentations
-
+Prenons l'exemple de notre DRH. Tout d'abord, nous disposons d'une interface d'intervieweur et de certaines implémentations 
 ```php
 interface Interviewer
 {
@@ -155,7 +154,6 @@ class CommunityExecutive implements Interviewer
 ```
 
 Maintenant, créons notre `HiringManager`
-
 ```php
 abstract class HiringManager
 {
@@ -169,9 +167,9 @@ abstract class HiringManager
         $interviewer->askQuestions();
     }
 }
-
 ```
-A présent, n'importe quel enfant peut étendre et fournir l'intervieweur requis
+
+À présent, n'importe quel enfant peut étendre et fournir l'intervieweur requis
 ```php
 class DevelopmentManager extends HiringManager
 {
@@ -189,8 +187,8 @@ class MarketingManager extends HiringManager
     }
 }
 ```
-et ensuite il peut être utilisé comme
 
+On pourra ensuite utiliser ce code comme ceci
 ```php
 $devManager = new DevelopmentManager();
 $devManager->takeInterview(); // Output: Asking about design patterns
@@ -199,25 +197,25 @@ $marketingManager = new MarketingManager();
 $marketingManager->takeInterview(); // Output: Asking about community building.
 ```
 
-**Quand l'utiliser?**
+**Quand l'utiliser ?**
 
-Utile quand il y a du traitement générique dans une classe, mais la sous-classe requise est déterminée dynamiquement lors de l'exécution. Ou, en d'autre termes, lorsque le client ne sait pas de quelle sous-classe exacte il pourrait avoir besoin. 
+Utile quand il y a du traitement générique dans une classe, mais la sous-classe requise est déterminée dynamiquement lors de l'exécution. Ou, en d'autres termes, lorsque le client ne sait pas de quelle sous-classe exacte il pourrait avoir besoin. 
 
 🔨 Abstract Factory
 ----------------
 
 Un exemple dans le monde réel
-> Étendons notre exemple de porte sur la base de Simple Factory. En fonction de vos besoins, vous pouvez obtenir une porte en bois depuis un magasin de portes en bois, d'une porte en fer depuis un magasin de porte en fer ou d'une porte en PVC d'un magasin approprié. De plus vous pourriez avoir besoin d'un type avec de différentes sortes de spécialités pour placer (fixer) la porte, par exemple un charpentier pour la porte en bois, un soudeur pour la porte en fer, etc. Comme vous pouvez le voir, les portes sont maintenant dépendantes, la porte en bois à besoins d'un charpentier, une porte en fer à besoins d'un soudeur etc.
+> Étendons notre exemple de porte sur la base de Simple Factory. En fonction de vos besoins vous pouvez obtenir une porte en bois, en fer ou en PVC  respectivement depuis des magasins de portes en bois, en fer ou spécialisés. De plus vous aurez besoin de différents artisans pour fixer la porte : par exemple un(e) charpentier(ère) pour la porte en bois, un(e) soudeur(se) pour la porte en fer, etc. Comme vous pouvez le voir les portes sont maintenant dépendantes d'une autre entité : une porte en bois à besoin d'un(e) charpentier(ère), une porte en fer à besoins d'un(e) soudeur(se), etc.
 
 En clair
-> Une usine de Factory (Une usine d'usines); Une usine (Factory) qui regroupe les Factory individuelles mais liées ensemble sans spécifier leurs classes concrètes. En d’autres mots, une Factory qui regroupe plusieurs Factory individuelles mais partageant des liens entre elles.
+> Il s'agit d'une usine de Factory (une usine d'usines) : une Factory qui regroupe les Factory individuelles mais dépendantes, sans spécifier leurs classes concrètes. 
 
 D'après Wikipédia
 > Le pattern Abstract Factory offre un moyen d'encapsuler un groupe de Factory individuelles qui ont un thème commun sans spécifier leurs classes concrètes.
 
 **Exemple de programme**
 
-Traduction de l'exemple de la porte (Door) ci-dessus. Tout d'abord nous avons notre interface `Door` et quelques implémentations pour elle.
+Traduction de l'exemple de la porte (Door) ci-dessus. Tout d'abord nous avons notre interface `Door` et quelques implémentations
 
 ```php
 interface Door
@@ -266,7 +264,7 @@ class Carpenter implements DoorFittingExpert
 }
 ```
 
-Maintenant, nous avons notre Abrastract Factory qui nous permettrait de créer une famille d'objets liés, c'est-à-dire que le Factory de la porte (`WoodenDoorFactory`) en bois créerait une porte en bois et un spécialiste de porte en bois (un Charpentier) et le Factory de la porte en fer (`IronDoorFactory`) créerait une porte en fer et un spécialiste de porte en fer (un Soudeur).
+Maintenant, l'Abstract Factory qui va nous permettre de créer une famille d'objets dépendants
 ```php
 interface DoorFactory
 {
@@ -274,7 +272,7 @@ interface DoorFactory
     public function makeFittingExpert(): DoorFittingExpert;
 }
 
-// Factory de la porte en bois qui retourne un Charpentier et une porte en bois
+// Factory de la porte en bois qui retourne un charpentier et une porte en bois
 class WoodenDoorFactory implements DoorFactory
 {
     public function makeDoor(): Door
@@ -288,7 +286,7 @@ class WoodenDoorFactory implements DoorFactory
     }
 }
 
-// Factory de la porte en fer qui retourne une porte en fer et un Soudeur
+// Factory de la porte en fer qui retourne une porte en fer et un soudeur
 class IronDoorFactory implements DoorFactory
 {
     public function makeDoor(): Door
@@ -302,7 +300,8 @@ class IronDoorFactory implements DoorFactory
     }
 }
 ```
-Et ensuite il peut être utilisé comme 
+
+La Factory peut ensuite être utilisée comme ceci 
 ```php
 $woodenFactory = new WoodenDoorFactory();
 
@@ -322,38 +321,35 @@ $door->getDescription();  // Output: I am an iron door
 $expert->getDescription(); // Output: I can only fit iron doors
 ```
 
-Comme vous pouvez le voir, le Factory de la porte (`WoodenDoorFactory`) a encapsulé le charpentier (`carpenter`) et la porte en bois (`wooden door`), aussi le Factory de la porte en fer (`IronDoorFactory`) a encapsulé la porte en fer (`iron door`) et le soudeur (`welder`). Et donc, cela nous a aidés à nous  assurer que pour chacune des portes créées, nous n'obtenions pas un mauvais expert.  
+Comme vous pouvez le voir, la Factory de la porte (`WoodenDoorFactory`) encapsule le charpentier (`Carpenter`) et la porte en bois (`WoodenDoor`), et la Factory de la porte en fer (`IronDoorFactory`) encapsule la porte en fer (`IronDoor`) et le soudeur (`Welder`). Cela nous assure que pour chacune des portes créées, nous aurons le bon artisan.  
 
-**Quand l'utiliser?**
+**Quand l'utiliser ?**
 
-Quand il y a des dépendances interdépendantes avec une logique de création pas si simples.
+Quand la logique de création se complique et implique des dépendances.
 
 👷 Builder
 --------------------------------------------
 Un exemple dans le monde réel
-> Imaginez que vous êtes chez Hardee's (une chaîne de restauration) et que vous passez une commande spécifique, Disons, un "Big Hardee" et ils le remettent sans poser *de questions*; c'est l'exemple d'une simple Factory. Mais il y a des cas où la logique de création pourrait impliquer plus d'étapes. Par exemple, vous voulez un ticket de métro personnalisé, Vous avez plusieurs options dans la façon de confectionner votre hamburger, par exemple, quel pain voulez-vous ? quels types de sauces aimeriez-vous ? quel fromage voudriez-vous ? etc. Dans de telles situations, le pattern Builder vient à la rescousse.
+> Imaginez que vous êtes chez McDonald's, vous passez commande, disons d'un "Big Mac" et le(la) serveur(se) vous le remet *sans poser de questions* ; voici un exemple de Simple Factory. Mais il y a des cas où la logique de création implique plus d'étapes, comme chez Subway : quel pain voulez-vous, quelle viande, quel fromage, quelle sauce… C'est dans de telles situations que nous allons utiliser le pattern Builder.
 
 En clair
-> Permets de créer des versions différentes d’un objet tout en évitant la pollution des constructeurs. Utile quand il pourrait y avoir plusieurs versions différentes d’un objet. Ou lorsqu’il y a beaucoup d’étapes dans la création d’un objet.
+> Un Builder permet de créer des versions différentes d’un objet tout en évitant de polluer le constructeur. Utile quand un objet existe en de multiples variations, ou lorsque sa création nécessite beaucoup d’étapes.
 
 D'après Wikipédia
-> Le pattern Builder est un pattern de conception de logiciels de création  d’objet avec l’intention de trouver une solution à l’anti-pattern de constructeur télescopique (ou  condenser).
-> Télescopique : dont les éléments s'emboîtent les uns dans les autres.
+> Le pattern Builder est un design pattern de création d’objet avec l’intention de trouver une solution à l’anti-pattern de constructeur télescopique (ou  condenser).
 
-Ayant dit cela, laissez-moi ajouter un anti-pattern de constructeur télescopique. À un moment donné ou à un autre, nous avons vu un constructeur semblable à celui du constructeur ci-dessous:
-
+Pour illustrer celà, voici à quoi ressemble l'anti-pattern du constructeur télescopique. À un moment où à un autre, nous avons tous vu/écrit ce genre de constructeur :
 ```php
 public function __construct($size, $cheese = true, $pepperoni = true, $tomato = false, $lettuce = true)
 {
 }
 ```
 
-Comme vous pouvez le voir; le nombre de paramètres du constructeur peut rapidement devenir incontrôlable et il pourrait être difficile de comprendre la disposition des paramètres. De plus, cette liste de paramètres pourrait continuer à augmenter si vous souhaitez ajouter d'autres options à l'avenir. C'est ce qu'on appelle un constructeur anti-pattern télescopique.
+Comme vous pouvez le voir le nombre de paramètres du constructeur peut rapidement devenir incontrôlable et il peut être difficile de comprendre la disposition de ces paramètres. De plus, cette liste pourrait continuer à augmenter si vous souhaitez ajouter d'autres options à l'avenir. C'est ce qu'on appelle un constructeur télescopique.
 
 **Exemple de programme**
 
 L'alternative raisonnable est d'utiliser le pattern Builder. Tout d'abord, nous avons notre hamburger que nous voulons créer.
-
 ```php
 class Burger
 {
@@ -375,8 +371,7 @@ class Burger
 }
 ```
 
-Et ensuite nous avons le constructeur
-
+Et ensuite nous avons le Builder
 ```php
 class BurgerBuilder
 {
@@ -422,19 +417,20 @@ class BurgerBuilder
     }
 }
 ```
-Et alors, il peut être utilisé comme :
+
+Il peut alors être utilisé comme ceci
 
 ```php
 $burger = (new BurgerBuilder(14))
-                    ->addPepperoni()
-                    ->addLettuce()
-                    ->addTomato()
-                    ->build();
+    ->addPepperoni()
+    ->addLettuce()
+    ->addTomato()
+    ->build();
 ```
 
 **Quand l'utiliser ?**
 
-Quand il peut avoir plusieurs versions d'un objet et pour éviter le constructeur télescopique. La principale différence par rapport au pattern Factory est là celle-ci; le pattern Factory doit être utilisé lorsque la création est un processus en une seule étape tandis que le pattern Builder doit être utilisé lorsque la création est un processus de plusieurs étapes.
+Quand il peut y avoir plusieurs variantes d'un objet et pour éviter le constructeur télescopique. La principale différence par rapport au pattern Factory est que ce dernier doit être utilisé lorsque la création est un processus en une seule étape, tandis que le pattern Builder doit être utilisé lorsque la création est un processus en plusieurs étapes.
 
 🐑 Prototype
 ------------
@@ -442,17 +438,16 @@ Un exemple dans le monde réel
 > Vous vous souvenez de Dolly ? Le mouton cloné ! N'entrons pas dans les détails mais nous allons parler de clonage.
 
 En clair
-> Crée un objet basé sur un objet existant comme du clonage.
+> Crée un objet en se basant sur un objet existant (comme du clonage).
 
 D'après Wikipédia
-> Le patron de conception prototype est utilisé lorsque la création d'une instance est complexe ou consommatrice en temps. Plutôt que créer plusieurs instances de la classe, on copie la première instance et on modifie la copie de façon appropriée.
+> Le patron de conception Prototype est utilisé lorsque la création d'une instance est complexe ou consommatrice en temps. Plutôt que créer plusieurs instances de la classe, on copie la première instance et on modifie la copie de façon appropriée.
 
-En gros, il permet de créer une copie d'un objet existant en le modifiant à nos besoins, au lieu de devoir passer dans les travers de recréer un nouvel objet en partant de zéro.
+En gros, il permet de créer une copie d'un objet existant en le modifiant selon nos besoins, au lieu de devoir recréer un nouvel objet à partir de zéro.
 
 **Exemple de programme**
 
-C'est faisable très facilement en PHP en utilisant `clone`
-
+C'est faisable très facilement en PHP en utilisant `clone`, voici déjà une classe pour notre mouton
 ```php
 class Sheep
 {
@@ -486,7 +481,8 @@ class Sheep
     }
 }
 ```
-Ensuite on peut le cloner comme ci-dessous
+
+On peut ensuite le cloner comme ceci
 ```php
 $original = new Sheep('Jolly');
 echo $original->getName(); // Jolly
@@ -501,22 +497,22 @@ echo $cloned->getCategory(); // Mountain sheep
 
 On peut également utiliser la méthode magique `__clone` pour modifier le comportement du clonage.
 
-**Quand l'utiliser?**
+**Quand l'utiliser ?**
 
 Quand on a besoin d'un objet similaire à un objet existant ou quand la création d'un tout nouvel objet serait trop coûteuse par rapport à un clonage.
 
 💍 Singleton
 ------------
 Un exemple dans le monde réel
-> Il ne peut y avoir qu'un seul président d'un pays à la fois. A chaque fois que le devoir l'appelle, c'est le même président qui agit. Le président est ici un singleton.
+> Il ne peut y avoir qu'un seul président d'un pays à la fois. À chaque fois que le devoir l'appelle, c'est le même président qui agit. Le président est ici un Singleton.
 
 En clair
-> S'assure qu'un seul et unique objet d'une classe ne peut être instancié.
+> S'assure qu'une classe ne peut être instanciée qu'une seule et unique fois.
 
 D'après Wikipédia
-> En génie logiciel, le singleton est un patron de conception (design pattern) dont l'objectif est de restreindre l'instanciation d'une classe à un seul objet (ou bien à quelques objets seulement). Il est utilisé lorsqu'on a besoin exactement d'un objet pour coordonner des opérations dans un système.
+> En génie logiciel, le singleton est un design pattern dont l'objectif est de restreindre l'instanciation d'une classe à un seul objet (ou bien à quelques objets seulement). Il est utilisé lorsqu'on a besoin exactement d'un objet pour coordonner des opérations dans un système.
 
-Le pattern Singleton est en fait considéré comme un anti-pattern et il faut éviter d'en abuser. Il n'est pas nécessairement mauvais et a quelques cas d'utilisation valides mais il doit être utilisé avec précaution car il introduit un état global dans l'application. Des changements à l'intérieur du Singleton pourraient avoir des effets secondaires à d'autres endroits et le debug peut s'avérer difficile. Une autre mauvaise conséquence de son utilisation est qu'il rend le code fortement couplé et les tests unitaires s'en retrouvent d'autant plus compliqués.
+Le pattern Singleton est en fait considéré comme un anti-pattern et il faut éviter d'en abuser. Il n'est pas nécessairement mauvais et présente quelques cas d'utilisation valides, mais il doit être utilisé avec précaution car il introduit un état global dans l'application. Des changements à l'intérieur du Singleton pourraient avoir des effets secondaires à d'autres endroits et le debug peut s'avérer difficile. Une autre mauvaise conséquence de son utilisation est qu'il rend le code fortement couplé et les tests unitaires s'en retrouvent d'autant plus compliqués.
 
 **Exemple de programme**
 
@@ -551,7 +547,8 @@ final class President
     }
 }
 ```
-Il peut ensuite être utilisé comme
+
+Il peut ensuite être utilisé comme ceci
 ```php
 $president1 = President::getInstance();
 $president2 = President::getInstance();
@@ -898,7 +895,7 @@ En clair
 > Le pattern Decorator vous permet de modifier dynamiquement le comportement d'un objet au moment de l'exécution en les enveloppant dans un objet d'une classe de décorateur.
 
 D'après Wikipédia
-> Dans la programmation orientée objet, le pattern Décorateur est un pattern de conception  de logiciels qui permet d'ajouter un comportement à un objet individuel, de manière statique ou dynamique, sans affecter le comportement d'autres objets de la même classe. Le pattern Décorateur est souvent utile pour adhérer au principe de responsabilité unique, car il permet de répartir les fonctionnalités entre les classes avec des domaines de préoccupation uniques.
+> Dans la programmation orientée objet, le pattern Décorateur est un design pattern  de logiciels qui permet d'ajouter un comportement à un objet individuel, de manière statique ou dynamique, sans affecter le comportement d'autres objets de la même classe. Le pattern Décorateur est souvent utile pour adhérer au principe de responsabilité unique, car il permet de répartir les fonctionnalités entre les classes avec des domaines de préoccupation uniques.
 
 **Exemple de programme**
 
